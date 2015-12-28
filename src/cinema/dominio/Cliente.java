@@ -1,15 +1,15 @@
 package cinema.dominio;
 
 public class Cliente {
-	private int codCliente;
+	private Long codCliente;
 	private String nomeCliente;
-	private int cpfCliente;
+	private long cpfCliente;
 	
 	
-	public int getCodCliente() {
+	public long getCodCliente() {
 		return codCliente;
 	}
-	public void setCodCliente(int codCliente) {
+	public void setCodCliente(long codCliente) {
 		this.codCliente = codCliente;
 	}
 	public String getNomeCliente() {
@@ -18,10 +18,10 @@ public class Cliente {
 	public void setNomeCliente(String nomeCliente) {
 		this.nomeCliente = nomeCliente;
 	}
-	public int getCpfCliente() {
+	public long getCpfCliente() {
 		return cpfCliente;
 	}
-	public void setCpfCliente(int cpfCliente) {
+	public void setCpfCliente(long cpfCliente) {
 		this.cpfCliente = cpfCliente;
 	}
 	
