@@ -36,7 +36,7 @@ public class ClienteDAO {
 	public static void clienteDelete (Cliente cliente){
         PreparedStatement pst=null;		
 		
-		String sql=("DELETE FROM contatos WHERE id ="+cliente.getCpfCliente());
+		String sql=("DELETE FROM cliente WHERE codigo ="+cliente.getCpfCliente());
 		
 		try {
 			pst = Conexao.executaStatement(sql);
