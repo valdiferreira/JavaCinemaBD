@@ -19,14 +19,13 @@ public class Conexao2 {
     public static Connection conexao() {
         // TODO code application logic here
         
+  
         
-       /* url = "jdbc:oracle:thin:@itapissuma.cin.ufpe.br/dbdisc"; //string de conexão para o ORACLE
+        /*url = "jdbc:oracle:thin:@localhost:1521/xe"; //string de conexão para o ORACLE
         
-        user = "g121if976_eq03"; //nome do usuário
+        user = "SYSTEM"; //nome do usu�rio
         
-        password = "equipe03"; //senha*/
-        
-                
+        password = "newpassword"; //senha*/     
         
         url = "jdbc:oracle:thin:@localhost:1521/xe"; //string de conexão para o ORACLE
         
@@ -44,7 +43,7 @@ public class Conexao2 {
 
            con = ds.getConnection(user,password);//conexao recebe os parametros de usuario e senha
        
-           System.out.println("Conexao Realizada");
+           //System.out.println("Conexao Realizada");
            return con;//confirmação
         }
 
