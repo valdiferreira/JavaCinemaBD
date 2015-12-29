@@ -14,7 +14,7 @@ public class Conexao {
 	public static Connection conectaBanco() throws SQLException, ClassNotFoundException{
 		Class.forName("oracle.jdbc.driver.OracleDriver");
 		con = DriverManager.getConnection(url,usr,pwd);
-		return con;
+		return Conexao2.conexao();
 	}
 	public static Connection fechaConexaoBanco(){
 		if(con != null){
