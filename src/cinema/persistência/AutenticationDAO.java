@@ -17,7 +17,6 @@ public class AutenticationDAO {
 				autentication.setOutput_senha(rs.getString("SENHA"));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			Conexao.fechaConexaoBanco();

@@ -10,13 +10,12 @@ public class FuncionarioDAO {
 		PreparedStatement pst=null;
 		//Inserção de funcionarios a partir do Objeto funcionario.
 		String sql=("INSER INTO FUNCIONARIO(CPF, NOME_FUNCIONARIO, NUM_CARTEIRA_TRABALHO, RUA, BAIRRO, NUMERO, COD_CINEMA, SENHA) "
-				+ "VALUES("+funcionario.getCpf()+", "+funcionario.getNome()+", "+funcionario.getNct()+", "+funcionario.getRua()+", "+funcionario.getRua()+", "
-				+funcionario.getBairro()+", "+funcionario.getNumero()+", "+funcionario.getCod_cinema()+", "+funcionario.getSenha()+")");
+				+ "VALUES('"+funcionario.getCpf()+"', '"+funcionario.getNome()+"', '"+funcionario.getNct()+"', '"+funcionario.getRua()+"', '"+funcionario.getRua()+"', '"
+				+funcionario.getBairro()+"', '"+funcionario.getNumero()+"', '"+funcionario.getCod_cinema()+"', '"+funcionario.getSenha()+"')");
 		try {
 			pst = Conexao.executaStatement(sql);
 			pst.execute();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			Conexao.fechaConexaoBanco();
@@ -32,7 +31,6 @@ public class FuncionarioDAO {
 			pst = Conexao.executaStatement(sql);
 			pst.execute();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			Conexao.fechaConexaoBanco();
@@ -43,7 +41,7 @@ public class FuncionarioDAO {
 	public static Funcionario Busca(String cpf){
 		Funcionario funcionario = new Funcionario();
 		PreparedStatement pst=null;
-		String sql=("SELECT * FUNCIONARIO WHERE CPF = "+cpf);
+		String sql=("SELECT * FROM FUNCIONARIO WHERE CPF = "+cpf);
 		ResultSet rs;
 		try {
 			pst = Conexao.executaStatement(sql);
@@ -59,7 +57,6 @@ public class FuncionarioDAO {
 				funcionario.setSenha(rs.getString("SENHA"));
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			Conexao.fechaConexaoBanco();
@@ -70,13 +67,12 @@ public class FuncionarioDAO {
 	public static void Update(Funcionario funcionario){
 		PreparedStatement pst=null;
 		String sql = ("UPDATE FUNCIONARIO "
-				+ "SET NOME = "+funcionario.getNome()+" NUM_CARTEIRA_TRABALHO = "+funcionario.getNct()+" RUA = "+funcionario.getRua()+" BAIRRO = "+funcionario.getBairro()+" NUMERO = "+funcionario.getNumero()+" COD_CINEMA = "+funcionario.getCod_cinema()+" SENHA = "+funcionario.getSenha()
-				+" WHERE CPF = "+funcionario.getCpf());
+				+ "SET NOME = '"+funcionario.getNome()+"', NUM_CARTEIRA_TRABALHO = '"+funcionario.getNct()+"', RUA = '"+funcionario.getRua()+"', BAIRRO = '"+funcionario.getBairro()+"', NUMERO = "+funcionario.getNumero()+", COD_CINEMA = '"+funcionario.getCod_cinema()+"', SENHA = '"+funcionario.getSenha()
+				+"' WHERE CPF = '"+funcionario.getCpf()+"'");
 		try {
 			pst = Conexao.executaStatement(sql);
 			pst.execute();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			Conexao.fechaConexaoBanco();

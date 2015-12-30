@@ -21,7 +21,6 @@ public class ClienteDAO {
 			pst = Conexao.executaStatement(sql);
 			pst.execute();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			Conexao.fechaConexaoBanco();
@@ -42,7 +41,6 @@ public class ClienteDAO {
 			pst = Conexao.executaStatement(sql);
 			pst.execute();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			Conexao.fechaConexaoBanco();
@@ -71,7 +69,6 @@ public class ClienteDAO {
 				System.out.println(c.getNomeCliente());
 			}
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			Conexao.fechaConexaoBanco();
@@ -99,7 +96,6 @@ public class ClienteDAO {
 			}
 			
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			Conexao.fechaConexaoBanco();
@@ -121,7 +117,6 @@ public class ClienteDAO {
 			pst = Conexao.executaStatement(sql);
 			pst.execute();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}finally {
 			Conexao.fechaConexaoBanco();
