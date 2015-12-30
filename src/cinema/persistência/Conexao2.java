@@ -21,17 +21,11 @@ public class Conexao2 {
         
   
         
-        /*url = "jdbc:oracle:thin:@localhost:1521/xe"; //string de conex√£o para o ORACLE
+        url = "jdbc:oracle:thin:@localhost:1521/xe"; //string de conex√£o para o ORACLE
         
         user = "SYSTEM"; //nome do usu·rio
         
-        password = "newpassword"; //senha*/     
-        
-        url = "jdbc:oracle:thin:@//oracle11g.cin.ufpe.br:1521/Instance01"; //string de conex√£o para o ORACLE
-        
-        user = "u_jbsn"; //nome do usu·rio
-        
-        password = "jewzgtrv"; //senha
+        password = "newpassword"; //senha
         
         try{
             

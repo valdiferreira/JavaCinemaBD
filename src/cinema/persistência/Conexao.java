@@ -5,9 +5,9 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 public class Conexao {
-	private static String url = "jdbc:oracle:thin:@//oracle11g.cin.ufpe.br:1521/Instance01";
-	private static String usr = "u_jbsn";
-	private static String pwd = "jewzgtrv";
+	private static String url = "jdbc:oracle:thin:@localhost:1521/xe";
+	private static String usr = "SYSTEM";
+	private static String pwd = "newpassword";
 	private static Connection con = null;
 	private static PreparedStatement pst = null;
 	public Conexao(){}
