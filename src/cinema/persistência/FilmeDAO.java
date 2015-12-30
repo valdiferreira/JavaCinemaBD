@@ -8,8 +8,8 @@ public class FilmeDAO {
 	//OBS: FORMATO PARA A DATA (YYYY-MM-DD) EX: 2015-11-21
 	public static void Create(Filme filme){
 		PreparedStatement pst = null;
-		String sql=("INSER INTO FILME(CODIGO, TITULO, TITULO_PORT, SINOPSE, ANO_LANCAMENTO, COD_DIRETOR, TIPO, GENERO) "
-				+ "VALUES('"+filme.getCodigo()+"', '"+filme.getTitulo()+"', '"+filme.getTitulo_port()+"', '"+filme.getSinopse()+"', TO_DATE('"+filme.getAno()+" 00:00:00', 'DD-MM-YYYY HH24:MI:SS'), '"
+		String sql=("INSERT INTO FILME(CODIGO, TITULO, TITULO_PORT, SINOPSE, ANO_LANCAMENTO, COD_DIRETOR, TIPO, GENERO) "
+				+ "VALUES('"+filme.getCodigo()+"', '"+filme.getTitulo()+"', '"+filme.getTitulo_port()+"', '"+filme.getSinopse()+"', TO_DATE('"+filme.getAno()+" 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '"
 				+filme.getCod_diretor()+"', '"+filme.getTipo()+"', '"+filme.getGenero()+"')");
 		try {
 			pst = Conexao.executaStatement(sql);
@@ -68,8 +68,8 @@ public class FilmeDAO {
 	public static void Update(Filme filme){
 		PreparedStatement pst = null;
 		String sql=("UPDATE FILME "
-				+ "SET CODIGO = "+filme.getCodigo()+", TITULO = '"+filme.getTitulo()+"', TITULO_PORT = '"+filme.getTitulo_port()+"', SINOPSE = '"+filme.getSinopse()+"', ANO_LANCAMENTO = TO_DATE('"+filme.getAno()+" 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), COD_DIRETOR = "
-				+filme.getCod_diretor()+", TIPO = '"+filme.getTipo()+"', GENERO = '"+filme.getGenero()+"')");
+				+ "SET TITULO = '"+filme.getTitulo()+"', TITULO_PORT = '"+filme.getTitulo_port()+"', SINOPSE = '"+filme.getSinopse()+"', ANO_LANCAMENTO = TO_DATE('"+filme.getAno()+" 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), COD_DIRETOR = "
+				+filme.getCod_diretor()+", TIPO = '"+filme.getTipo()+"', GENERO = '"+filme.getGenero()+"' WHERE CODIGO = "+filme.getCodigo());
 		try {
 			pst = Conexao.executaStatement(sql);
 			pst.execute();

@@ -5,7 +5,7 @@ import java.sql.*;
 import cinema.dominio.Diretor;
 
 public class DiretorDAO {
-
+	
 	public static void Create(Diretor diretor) {
 		PreparedStatement pst = null;
 		String sql = ("INSERT INTO DIRETOR (CODIGO, NOME, NACIONALIDADE) VALUES ('"+diretor.getCodigo()+"', '"+diretor.getNome()+"', '"+diretor.getNacionalidade()+"')"); 
