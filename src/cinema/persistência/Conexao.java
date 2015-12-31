@@ -12,8 +12,7 @@ public class Conexao {
 	private static PreparedStatement pst = null;
 	public Conexao(){}
 	public static Connection conectaBanco() throws SQLException, ClassNotFoundException{
-		Class.forName("oracle.jdbc.driver.OracleDriver");
-		con = DriverManager.getConnection(url,usr,pwd);
+		
 		return Conexao2.conexao();
 	}
 	public static Connection fechaConexaoBanco(){
