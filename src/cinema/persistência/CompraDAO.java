@@ -11,10 +11,7 @@ public class CompraDAO {
 	
 	public static void Create(Compra compra) {
 		PreparedStatement pst = null;
-		String sql = ("INSERT INTO COMPRA (CODIGO, DATA_HORA, FORMA_PAGAMENTO, QTD_INGRESSO, VALOR_TOTAL, COD_CLIENTE, COD_SESSAO) "
-				+ "VALUES ('"+compra.getCodigo()+"', TO_DATE('"+compra.getData_hora()+" 00:00:00', 'YYYY-MM-DD HH24:MI:SS')),"
-						+ "'"+compra.getForma_pagameto()+"', '"+compra.getQtd_ingresso()+"','"+compra.getValor_total()+"','"
-							+compra.getCod_cliente()+"','"+compra.getCod_sessao()+"'");
+		String sql = ("INSERT INTO COMPRA (CODIGO, DATA_HORA, FORMA_PAGAMENTO, QTD_INGRESSO, VALOR_TOTAL, COD_CLIENTE, COD_SESSAO) VALUES ('"+compra.getCodigo()+"', TIMESTAMP '"+compra.getData_hora()+" 17:45:00.12', '"+compra.getForma_pagameto()+"', '"+compra.getQtd_ingresso()+"', '"+compra.getValor_total()+"', '"+compra.getCod_cliente()+"', '"+compra.getCod_sessao()+"')");
 		try {
 			pst = Conexao.executaStatement(sql);
 			pst.execute();
@@ -40,13 +37,13 @@ public class CompraDAO {
 	}
 	public static void Update(Compra compra) {
 		PreparedStatement pst = null;
-		String sql = ("UPDATE COMPRA WHERE SET DATA_HORA='"+compra.getData_hora()
-				+"' FORMA_PAGAMENTO='"+compra.getForma_pagameto()
-				+"' QTD_INGRESSO ='"+compra.getQtd_ingresso()
-				+"' VALOR_TOTAL='"+compra.getValor_total()
-				+"' COD_CLIENTE='"+compra.getCod_cliente()
-				+"' COD_SESSAO='"+compra.getCod_sessao()
-				+"' where CODIGO='"+compra.getCodigo()+"'");
+		String sql = ("UPDATE COMPRA SET DATA_HORA = TIMESTAMP '"+compra.getData_hora()+" 17:45:00.12"
+				+"', FORMA_PAGAMENTO = '"+compra.getForma_pagameto()
+				+"', QTD_INGRESSO = '"+compra.getQtd_ingresso()
+				+"', VALOR_TOTAL = '"+compra.getValor_total()
+				+"', COD_CLIENTE = '"+compra.getCod_cliente()
+				+"', COD_SESSAO = '"+compra.getCod_sessao()
+				+"' WHERE CODIGO = '"+compra.getCodigo()+"'");
 		try {
 			pst = Conexao.executaStatement(sql);
 			pst.execute();
@@ -70,9 +67,10 @@ public class CompraDAO {
 				compra.setCodigo(rs.getString("CODIGO"));
 				compra.setData_hora(rs.getString("DATA_HORA"));
 				compra.setForma_pagameto(rs.getString("FORMA_PAGAMENTO"));
+				compra.setQtd_ingresso(rs.getString("QTD_INGRESSO"));
 				compra.setValor_total(rs.getString("VALOR_TOTAL"));
-				compra.setCod_cliente(rs.getString("cod_cliente"));
-				compra.setCod_sessao(rs.getString("cod_sessao"));
+				compra.setCod_cliente(rs.getString("COD_CLIENTE"));
+				compra.setCod_sessao(rs.getString("COD_SESSAO"));
 				
 			}
 			

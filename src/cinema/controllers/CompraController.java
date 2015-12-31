@@ -13,6 +13,7 @@ public class CompraController {
 		compra.setCod_sessao(cod_sessao);
 		compra.setData_hora(data_hora);
 		compra.setForma_pagameto(forma_pagamento);
+		compra.setQtd_ingresso(qtd_ingresso);
 		compra.setValor_total(valor_total);
 		CompraDAO.Create(compra);
 		
