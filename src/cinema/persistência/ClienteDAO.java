@@ -11,11 +11,11 @@ import cinema.dominio.Cliente;
 
 public class ClienteDAO {
 
-	public static void clienteSave (Cliente cliente) {
+	public static void Create(Cliente cliente) {
 		PreparedStatement pst=null;		
 		
-		String sql=("insert into cliente (CODIGO, NOME, CPF) values ("
-		+ cliente.getCodCliente()+",'"+cliente.getNomeCliente()+"',"+cliente.getCpfCliente()+ ")");
+		String sql=("INSERT INTO CLIENTE(CODIGO, NOME, CPF) VALUES ("
+		+ cliente.getCodigo()+",'"+cliente.getNome()+"',"+cliente.getCpf()+ ")");
 		
 		try {
 			pst = Conexao.executaStatement(sql);
@@ -32,10 +32,10 @@ public class ClienteDAO {
 	
 	
 	
-	public static void clienteDelete (Cliente cliente){
+	public static void Delete(String codigo){
         PreparedStatement pst=null;		
 		
-		String sql=("DELETE FROM cliente WHERE codigo ="+cliente.getCpfCliente());
+		String sql=("DELETE CLIENTE WHERE CODIGO = "+codigo);
 		
 		try {
 			pst = Conexao.executaStatement(sql);
@@ -53,20 +53,20 @@ public class ClienteDAO {
 		
 		PreparedStatement pst=null;		
 		ResultSet rs;
-		String sql=("select * from cliente");
+		String sql=("SELECT * FROM CLIENTE");
 		
 		try {
 			pst = Conexao.executaStatement(sql);
 			rs=pst.executeQuery();
 			while (rs.next()){
 				Cliente cliente = new Cliente();
-				cliente.setCpfCliente(rs.getLong("CPF"));
-				cliente.setCodCliente(rs.getLong("CODIGO"));
-				cliente.setNomeCliente(rs.getString("NOME"));
+				cliente.setCpf(rs.getString("CPF"));
+				cliente.setCodigo(rs.getString("CODIGO"));
+				cliente.setNome(rs.getString("NOME"));
 				listaCliente.add(cliente);
 			}
 			for(Cliente c : listaCliente){
-				System.out.println(c.getNomeCliente());
+				System.out.println(c.getNome());
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -78,20 +78,20 @@ public class ClienteDAO {
 		
 		return listaCliente;
 	}
-	public static Cliente clienteBusca (long l){
+	public static Cliente Busca(String codigo){
 		Cliente cliente = new Cliente ();
-		PreparedStatement pst=null;		
+		PreparedStatement pst = null;		
 		ResultSet rs;
-		String sql=("select * from cliente where codigo="+l);
+		String sql=("SELECT * FROM CLIENTE WHERE CODIGO = "+codigo);
 		
 		try {
 			pst = Conexao.executaStatement(sql);
 			rs=pst.executeQuery();
 			while (rs.next()){
 				
-				cliente.setCpfCliente(rs.getLong("CPF"));
-				cliente.setCodCliente(rs.getLong("CODIGO"));
-				cliente.setNomeCliente(rs.getString("NOME"));
+				cliente.setCpf(rs.getString("CPF"));
+				cliente.setCodigo(rs.getString("CODIGO"));
+				cliente.setNome(rs.getString("NOME"));
 				
 			}
 			
@@ -107,11 +107,11 @@ public class ClienteDAO {
 	}
 	
 	
-	public static void clienteUpdate(Cliente cliente) {
-	PreparedStatement pst=null;		
+	public static void Update(Cliente cliente) {
+	PreparedStatement pst = null;		
 		
-		String sql=("UPDATE cliente SET nome ='"+cliente.getNomeCliente()+"', cpf="+cliente.getCpfCliente()+
-				" WHERE codigo="+cliente.getCodCliente());
+		String sql=("UPDATE CLIENTE SET NOME ='"+cliente.getNome()+"', CPF = "+cliente.getCpf()+
+				" WHERE CODIGO = "+cliente.getCodigo());
 		
 		try {
 			pst = Conexao.executaStatement(sql);
@@ -123,8 +123,8 @@ public class ClienteDAO {
 			Conexao.fechaPreparedStatement();
 		
 		
+		}
+	
+	
 	}
-	
-	
 }
-	}
