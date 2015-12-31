@@ -12,7 +12,7 @@ import java.awt.CardLayout;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
-import cinema.controllers.ClienteControllers;
+import cinema.controllers.ClienteController;
 import cinema.persistência.ClienteDAO;
 
 import java.awt.event.ActionListener;
@@ -69,8 +69,7 @@ public class ClienteGui extends JFrame {
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				JPanel panel_2 = new Update(ClienteControllers.buscaCliente(
-						Long.parseLong(textField.getText())));
+				JPanel panel_2 = new Update(ClienteController.busca(textField.getText()));
 				panel.add(panel_2, "Dados");
 				cards.show(panel, "Dados");
 				

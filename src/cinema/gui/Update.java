@@ -2,7 +2,7 @@ package cinema.gui;
 
 import javax.swing.JPanel;
 
-import cinema.controllers.ClienteControllers;
+import cinema.controllers.ClienteController;
 import cinema.dominio.Cliente;
 import cinema.persistência.ClienteDAO;
 
@@ -14,7 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.FlowLayout;
 
 public class Update extends JPanel {
-	private long codidoCliente;
+	private String codidoCliente;
 	private JTextField textField;
 	private JTextField textField_1;
 
@@ -28,7 +28,7 @@ public class Update extends JPanel {
 		
 	}
 	public Update(Cliente cliente) {
-		this.codidoCliente=cliente.getCodCliente();
+		this.codidoCliente=cliente.getCodigo();
 		setLayout(null);
 		
 		textField = new JTextField();
@@ -41,14 +41,16 @@ public class Update extends JPanel {
 		add(textField_1);
 		textField_1.setColumns(10);
 		
-		textField.setText(cliente.getNomeCliente());
-		textField_1.setText(Long.toString(cliente.getCpfCliente()));
+		textField.setText(cliente.getNome());
+		textField_1.setText(cliente.getCpf());
 		
 		JButton btnNewButton = new JButton("New button");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				ClienteControllers.updateCliente(textField.getText(), Long.parseLong(textField_1.getText())
-						, codidoCliente);
+				cliente.setCodigo(codidoCliente);
+				cliente.setCpf(textField_1.getText());
+				cliente.setNome(textField.getText());
+				ClienteController.update(cliente);
 				
 				
 			}
