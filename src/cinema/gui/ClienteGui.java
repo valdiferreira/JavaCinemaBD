@@ -82,7 +82,7 @@ public class ClienteGui extends JFrame {
 		JButton btnNewButton = new JButton("Voltar");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				cards.show(panel, "busca");
+				cards.show(panel, "Dados");
 			}
 		});
 		btnNewButton.setBounds(165, 1, 89, 23);
