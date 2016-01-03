@@ -69,7 +69,7 @@ public class ClienteGui extends JFrame {
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				JPanel panel_2 = new Update(ClienteController.busca(textField.getText()));
+				JPanel panel_2 = new ClienteUpdate(ClienteController.busca(textField.getText()));
 				panel.add(panel_2, "Dados");
 				cards.show(panel, "Dados");
 				
