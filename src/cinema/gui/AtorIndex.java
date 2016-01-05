@@ -4,11 +4,12 @@ import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 
-import cinema.controllers.ClienteController;
+import cinema.controllers.*;
 
 import java.awt.event.ActionListener;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
 
 public class AtorIndex extends JPanel {
 	
@@ -30,21 +31,28 @@ public class AtorIndex extends JPanel {
 		
 		
 		buscarTextField = new JTextField();
-		buscarTextField.setBounds(0, 100, 89, 20);
+		buscarTextField.setBounds(258, 100, 163, 20);
 		atorInicio.add(buscarTextField, "buscarTextField");
 		
 		buscarTextField.setColumns(10);
 		
-		JButton btnBuscar = new JButton("Buscar Cliente");
-		btnBuscar.setBounds(100, 100, 170, 20);
+		JButton btnBuscar = new JButton("Buscar Ator");
+		btnBuscar.setBounds(432, 100, 170, 20);
 		atorInicio.add(btnBuscar, "btnBuscar");
+		
+		JLabel lblNewLabel = new JLabel("ID do ator");
+		lblNewLabel.setBounds(306, 75, 103, 14);
+		atorInicio.add(lblNewLabel);
+		
+		JButton btnCriar = new JButton("Criar");
+		btnCriar.setBounds(292, 126, 89, 23);
+		atorInicio.add(btnCriar);
 		
 		
 		
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				JPanel atorUpdate = new ClienteUpdate(ClienteController.busca(buscarTextField.getText()));
+				JPanel atorUpdate = new AtorUpdate(AtorController.busca(buscarTextField.getText()));
 				atorUpdate.setBounds(0, 75, 884, 389);
 				atorPanelCards.add(atorUpdate, "Buscar");
 				atorInicio.setVisible(false);

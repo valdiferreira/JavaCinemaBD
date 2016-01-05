@@ -9,6 +9,7 @@ import cinema.controllers.ClienteController;
 import java.awt.event.ActionListener;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
+import javax.swing.JLabel;
 
 public class ClienteIndex extends JPanel {
 	
@@ -30,14 +31,31 @@ public class ClienteIndex extends JPanel {
 		
 		
 		buscarTextField = new JTextField();
-		buscarTextField.setBounds(0, 100, 89, 20);
+		buscarTextField.setBounds(327, 100, 124, 20);
 		ClienteInicio.add(buscarTextField, "buscarTextField");
 		
 		buscarTextField.setColumns(10);
 		
 		JButton btnBuscar = new JButton("Buscar Cliente");
-		btnBuscar.setBounds(100, 100, 170, 20);
+		btnBuscar.setBounds(462, 100, 170, 20);
 		ClienteInicio.add(btnBuscar, "btnBuscar");
+		
+		JLabel lblId = new JLabel("ID");
+		lblId.setBounds(361, 75, 46, 14);
+		ClienteInicio.add(lblId);
+		
+		JButton btnCriar = new JButton("Criar");
+		btnCriar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JPanel clienteUpdate = new ClienteCria();
+				clienteUpdate.setBounds(0, 75, 884, 389);
+				ClientePanelCards.add(clienteUpdate, "Buscar");
+				ClienteInicio.setVisible(false);
+				clienteCard.show(ClientePanelCards, "Criar");
+			}
+		});
+		btnCriar.setBounds(347, 131, 89, 23);
+		ClienteInicio.add(btnCriar);
 		
 		
 		

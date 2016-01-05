@@ -14,56 +14,85 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.FlowLayout;
 
+import javax.swing.JLabel;
+
 public class ClienteUpdate extends JPanel {
 	private String codidoCliente;
-	private JTextField textField;
-	private JTextField textField_1;
+	private JTextField nomeField;
+	private JTextField cpfField;
 	private JButton btnNewButton; 
+	private JTextField codigoField;
 	
 	
 	/**
 	 * Create the panel.
 	 */
-	public ClienteUpdate (){
-		setLayout(null);
-		
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setBounds(67, 166, 89, 23);
-		add(btnNewButton);
-		
-		textField = new JTextField();
-		textField.setBounds(70, 108, 86, 20);
-		add(textField);
-		textField.setColumns(10);
-		
-		textField_1 = new JTextField();
-		textField_1.setBounds(67, 135, 86, 20);
-		add(textField_1);
-		textField_1.setColumns(10);
-		
-		
-		
-	}
+
+	
 	public ClienteUpdate(Cliente cliente) {
 		this.codidoCliente=cliente.getCodigo();
 		setLayout(null);
 
-		JButton btnNewButton = new JButton("New button");
-		btnNewButton.setBounds(67, 166, 89, 23);
-		add(btnNewButton);
+		JButton btnUpdate = new JButton("Atualizar");
+		btnUpdate.setBounds(363, 166, 87, 23);
+		add(btnUpdate);
 		
-		textField = new JTextField();
-		textField.setBounds(70, 108, 86, 20);
-		add(textField);
-		textField.setColumns(10);
+		codigoField = new JTextField();
+		codigoField.setText((String) null);
+		codigoField.setColumns(10);
+		codigoField.setBounds(363, 82, 184, 20);
+		add(codigoField);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(67, 135, 86, 20);
-		add(textField_1);
-		textField_1.setColumns(10);
+		nomeField = new JTextField();
+		nomeField.setBounds(363, 108, 184, 20);
+		add(nomeField);
+		nomeField.setColumns(10);
 		
-		textField.setText(cliente.getNome());
-		textField_1.setText(cliente.getCpf());
+		cpfField = new JTextField();
+		cpfField.setEditable(false);
+		cpfField.setBounds(363, 135, 184, 20);
+		add(cpfField);
+		cpfField.setColumns(10);
+		
+		codigoField.setText(cliente.getCodigo());
+		nomeField.setText(cliente.getNome());
+		cpfField.setText(cliente.getCpf());
+		
+		JLabel lblInformaesDoUsurio = new JLabel("Informa\u00E7\u00F5es do cliente");
+		lblInformaesDoUsurio.setBounds(390, 57, 145, 14);
+		add(lblInformaesDoUsurio);
+		
+		JLabel lblId = new JLabel("ID:");
+		lblId.setBounds(307, 85, 46, 14);
+		add(lblId);
+		
+		JLabel lblNome = new JLabel("Nome:");
+		lblNome.setBounds(307, 111, 46, 14);
+		add(lblNome);
+		
+		JLabel lblCpf = new JLabel("CPF:");
+		lblCpf.setBounds(307, 138, 46, 14);
+		add(lblCpf);
+		
+		JButton btnDelete = new JButton("Deletar");
+		btnDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int n = JOptionPane.showConfirmDialog(
+					    getComponent(0),
+					    "Você tem certeza que deseja deletar este usuário?",
+					    "Confirmação",
+					    JOptionPane.YES_NO_OPTION);
+				if (n==0){
+					ClienteController.delete(cliente.getCodigo());
+					cliente.setCodigo("");
+					cliente.setCpf("");
+					cliente.setNome("");
+				}
+			}
+		});
+		btnDelete.setBounds(458, 166, 89, 23);
+		add(btnDelete);
+		
 		
 		
 		
@@ -71,18 +100,18 @@ public class ClienteUpdate extends JPanel {
 		
 	
 		
-		btnNewButton.addActionListener(new ActionListener() {
+		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
 				int n = JOptionPane.showConfirmDialog(
 					    getComponent(0),
-					    "Would you like green eggs and ham?",
-					    "An Inane Question",
+					    "Você tem certeza que deseja atualizar este usuário?",
+					    "Confirmação",
 					    JOptionPane.YES_NO_OPTION);
 				if (n==0){
 				cliente.setCodigo(codidoCliente);
-				cliente.setCpf(textField_1.getText());
-				cliente.setNome(textField.getText());
+				cliente.setCpf(cpfField.getText());
+				cliente.setNome(nomeField.getText());
 				ClienteController.update(cliente);
 				}
 				
@@ -93,5 +122,4 @@ public class ClienteUpdate extends JPanel {
 		
 		
 	}
-
 }

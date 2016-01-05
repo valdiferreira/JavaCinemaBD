@@ -2,7 +2,8 @@ package cinema.gui;
 
 import javax.swing.JPanel;
 
-import cinema.controllers.ClienteController;
+import cinema.controllers.*;
+import cinema.dominio.Ator;
 import cinema.dominio.Cliente;
 import cinema.persistência.ClienteDAO;
 
@@ -13,55 +14,92 @@ import javax.swing.JOptionPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.FlowLayout;
+import javax.swing.JLabel;
 
 public class AtorUpdate extends JPanel {
-	private String codidoCliente;
-	private JTextField textField;
-	private JTextField textField_1;
+	private String codidoAtor;
+	private JTextField nomeField;
+	private JTextField codigoField;
+	private JLabel lblNome;
+	private JLabel lblCodigo;
+	private JLabel lblData;
+	private JLabel lblNacionalidade;
+	private JButton btnDelete;
+	private JTextField dataField;
+	private JTextField nacionalidadeField;
 
 	/**
 	 * Create the panel.
 	 */
-	public AtorUpdate (){
-		setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
-		
-		
-	}
-	public AtorUpdate(Cliente cliente) {
-		this.codidoCliente=cliente.getCodigo();
+
+	public AtorUpdate(Ator ator) {
+		this.codidoAtor=ator.getCodigo();
 		setLayout(null);
 		
-		textField = new JTextField();
-		textField.setBounds(30, 100, 86, 20);
-		add(textField);
-		textField.setColumns(10);
+		nomeField = new JTextField();
+		nomeField.setBounds(333, 100, 171, 20);
+		add(nomeField);
+		nomeField.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setBounds(30, 130, 86, 20);
-		add(textField_1);
-		textField_1.setColumns(10);
+		codigoField = new JTextField();
+		codigoField.setEditable(false);
+		codigoField.setEnabled(false);
+		codigoField.setBounds(333, 130, 58, 20);
+		add(codigoField);
+		codigoField.setColumns(10);
 		
-		textField.setText(cliente.getNome());
-		textField_1.setText(cliente.getCpf());
+		dataField = new JTextField();
+		dataField.setBounds(333, 161, 171, 20);
+		add(dataField);
+		dataField.setColumns(10);
 		
+		nacionalidadeField = new JTextField();
+		nacionalidadeField.setBounds(333, 192, 171, 20);
+		add(nacionalidadeField);
+		nacionalidadeField.setColumns(10);
 		
+		nomeField.setText(ator.getNome());
+		codigoField.setText(ator.getCodigo());
+		dataField.setText(ator.getData());
+		nacionalidadeField.setText(ator.getNacionalidade());
+
 		
-		JButton btnNewButton = new JButton("Update");
-		btnNewButton.setBounds(30, 160, 89, 20);
+		JButton btnNewButton = new JButton("Atualizar");
+		btnNewButton.setBounds(333, 223, 89, 20);
 		add(btnNewButton);
+		
+		lblNome = new JLabel("Nome");
+		lblNome.setBounds(287, 103, 46, 14);
+		add(lblNome);
+		
+		lblCodigo = new JLabel("Codigo");
+		lblCodigo.setBounds(287, 133, 46, 14);
+		add(lblCodigo);
+		
+		lblData = new JLabel("Data");
+		lblData.setBounds(287, 164, 46, 14);
+		add(lblData);
+		
+		lblNacionalidade = new JLabel("Nacionalidade");
+		lblNacionalidade.setBounds(244, 195, 89, 14);
+		add(lblNacionalidade);
+		
+		btnDelete = new JButton("Deletar");
+		btnDelete.setBounds(427, 223, 77, 20);
+		add(btnDelete);
+		
+		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int n = JOptionPane.showConfirmDialog(
 					    getComponent(0),
-					    "Would you like green eggs and ham?",
-					    "An Inane Question",
+					    "Você deseja atualizar?",
+					    "Confirmação",
 					    JOptionPane.YES_NO_OPTION);
 				if (n==0){
-				cliente.setCodigo(codidoCliente);
-				cliente.setCpf(textField_1.getText());
-				cliente.setNome(textField.getText());
-				ClienteController.update(cliente);
+				ator.setCodigo(codidoAtor);
+				ator.setNome(nomeField.getText());
+				AtorController.update(ator);
 				}
 				
 				

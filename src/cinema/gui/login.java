@@ -1,11 +1,11 @@
 package cinema.gui;
 
 import java.awt.EventQueue;
-
 import java.awt.Image;
 
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 
@@ -96,9 +96,13 @@ public class login {
 				String senha = new String(password);
 				String cpf = new String(textField.getText());
 				if(AutenticationController.Autentication(cpf, senha)){
-					System.out.println("Dados corretos.");
+					frmSistemaDeGesto.setVisible(false);
+				    new TelaPrincipal().setVisible(true);
 				}else{
-					System.out.println("Dados incorretos.");
+					JOptionPane.showMessageDialog(null,
+						    "Dados incorretos, digite novamente.",
+						    "Erro",
+						    JOptionPane.ERROR_MESSAGE);
 				}
 			}
 		});
