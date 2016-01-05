@@ -45,6 +45,15 @@ public class AtorIndex extends JPanel {
 		atorInicio.add(lblNewLabel);
 		
 		JButton btnCriar = new JButton("Criar");
+		btnCriar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JPanel atorUpdate = new AtorCria();
+				atorUpdate.setBounds(0, 75, 884, 389);
+				atorPanelCards.add(atorUpdate, "Buscar");
+				atorInicio.setVisible(false);
+				atorCard.show(atorPanelCards, "Cria");
+			}
+		});
 		btnCriar.setBounds(292, 126, 89, 23);
 		atorInicio.add(btnCriar);
 		

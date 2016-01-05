@@ -60,7 +60,7 @@ public class AtorUpdate extends JPanel {
 		
 		nomeField.setText(ator.getNome());
 		codigoField.setText(ator.getCodigo());
-		dataField.setText(ator.getData());
+		dataField.setText(ator.getData().substring(0,10));
 		nacionalidadeField.setText(ator.getNacionalidade());
 
 		
@@ -85,20 +85,38 @@ public class AtorUpdate extends JPanel {
 		add(lblNacionalidade);
 		
 		btnDelete = new JButton("Deletar");
+		btnDelete.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				int n = JOptionPane.showConfirmDialog(
+					    getComponent(0),
+					    "Você deseja mesmo deletar?",
+					    "Confirmação",
+					    JOptionPane.YES_NO_OPTION);
+				if (n==0){
+					AtorController.delete(codigoField.getText());
+				}
+			}
+		});
 		btnDelete.setBounds(427, 223, 77, 20);
 		add(btnDelete);
+		
+		JLabel lblExAaaa = new JLabel("Ex: AAAA-MM-DD (2015-12-23)");
+		lblExAaaa.setBounds(514, 164, 209, 14);
+		add(lblExAaaa);
 		
 		
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int n = JOptionPane.showConfirmDialog(
 					    getComponent(0),
-					    "Você deseja atualizar?",
+					    "Você deseja mesmo atualizar?",
 					    "Confirmação",
 					    JOptionPane.YES_NO_OPTION);
 				if (n==0){
 				ator.setCodigo(codidoAtor);
 				ator.setNome(nomeField.getText());
+				ator.setData(dataField.getText());
+				ator.setNacionalidade(nacionalidadeField.getText());
 				AtorController.update(ator);
 				}
 				
@@ -108,5 +126,4 @@ public class AtorUpdate extends JPanel {
 		
 		
 	}
-
 }
