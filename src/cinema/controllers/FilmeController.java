@@ -28,4 +28,12 @@ public class FilmeController {
 	public static void update(Filme filme){
 		FilmeDAO.Update(filme);
 	}
+	//Metodo para adicionar ator a filme.
+	public static void add_ator(String cod_filme, String cod_ator){
+		FilmeDAO.Add_Ator(cod_filme, cod_ator);
+	}
+	//MEtodo para deletar ator a filme.
+	public static void del_ator(String cod_filme, String cod_ator){
+		FilmeDAO.Del_Ator(cod_filme, cod_ator);
+	}
 }

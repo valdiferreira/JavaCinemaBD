@@ -11,7 +11,7 @@ public class ClienteTeste {
 	
 	public static void busca(){
 		Cliente cliente = new Cliente();
-		cliente = ClienteController.busca("7");
+		cliente = ClienteController.busca("1");
 		System.out.println(cliente.getCodigo()+" - "+cliente.getNome()+" - "+cliente.getCpf());
 	}
 	

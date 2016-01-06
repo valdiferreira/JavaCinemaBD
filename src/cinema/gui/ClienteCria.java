@@ -3,6 +3,7 @@ package cinema.gui;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -56,6 +57,7 @@ public class ClienteCria extends JPanel {
 		btnCriar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ClienteController.create(nomeField.getText(), cpfField.getText(), codigoField.getText());
+				JOptionPane.showMessageDialog(null, "Cliente criado com sucesso.", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		btnCriar.setBounds(418, 205, 89, 23);

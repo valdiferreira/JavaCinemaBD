@@ -43,7 +43,6 @@ public class AtorUpdate extends JPanel {
 		
 		codigoField = new JTextField();
 		codigoField.setEditable(false);
-		codigoField.setEnabled(false);
 		codigoField.setBounds(333, 130, 58, 20);
 		add(codigoField);
 		codigoField.setColumns(10);
@@ -94,6 +93,7 @@ public class AtorUpdate extends JPanel {
 					    JOptionPane.YES_NO_OPTION);
 				if (n==0){
 					AtorController.delete(codigoField.getText());
+					JOptionPane.showMessageDialog(null, "Ator deletado com sucesso.", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 		});
@@ -118,6 +118,7 @@ public class AtorUpdate extends JPanel {
 				ator.setData(dataField.getText());
 				ator.setNacionalidade(nacionalidadeField.getText());
 				AtorController.update(ator);
+				JOptionPane.showMessageDialog(null, "Ator atualizado com sucesso.", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
 				}
 				
 				

@@ -80,4 +80,32 @@ public class FilmeDAO {
 			Conexao.fechaPreparedStatement();
 		}
 	}
+	
+	public static void Add_Ator(String cod_filme, String cod_ator){
+		PreparedStatement pst = null;
+		String sql=("INSERT INTO FILME_POSSUI_ATOR (COD_FILME, COD_ATOR) VALUES ('"+cod_filme+"', '"+cod_ator+"')");
+		try {
+			pst = Conexao.executaStatement(sql);
+			pst.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			Conexao.fechaConexaoBanco();
+			Conexao.fechaPreparedStatement();
+		}
+	}
+	
+	public static void Del_Ator(String cod_filme, String cod_ator){
+		PreparedStatement pst = null;
+		String sql=("DELETE FILME_POSSUI_ATOR WHERE COD_ATOR = "+cod_ator+" AND COD_FILME = "+cod_filme);
+		try {
+			pst = Conexao.executaStatement(sql);
+			pst.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			Conexao.fechaConexaoBanco();
+			Conexao.fechaPreparedStatement();
+		}
+	}
 }

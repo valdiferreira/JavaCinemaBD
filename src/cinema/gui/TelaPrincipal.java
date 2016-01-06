@@ -72,5 +72,27 @@ public class TelaPrincipal extends JFrame {
 		});
 		btnAtor.setBounds(99, 0, 89, 23);
 		contentPane.add(btnAtor);
+		
+		JButton btnFilme = new JButton("Filme");
+		btnFilme.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JPanel filmeIndex = new FilmeIndex();
+				Index.add(filmeIndex, "filmeIndex");
+				cards_Index.show(Index,"filmeIndex");
+			}
+		});
+		btnFilme.setBounds(198, 0, 89, 23);
+		contentPane.add(btnFilme);
+		
+		JButton btnDiretor = new JButton("Diretor");
+		btnDiretor.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JPanel diretorIndex = new DiretorIndex();
+				Index.add(diretorIndex, "diretorIndex");
+				cards_Index.show(Index,"diretorIndex");
+			}
+		});
+		btnDiretor.setBounds(298, 0, 89, 23);
+		contentPane.add(btnDiretor);
 	}
 }

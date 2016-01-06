@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import java.awt.Font;
 
 public class AtorIndex extends JPanel {
 	
@@ -31,20 +32,20 @@ public class AtorIndex extends JPanel {
 		
 		
 		buscarTextField = new JTextField();
-		buscarTextField.setBounds(258, 100, 163, 20);
+		buscarTextField.setBounds(295, 109, 41, 20);
 		atorInicio.add(buscarTextField, "buscarTextField");
 		
 		buscarTextField.setColumns(10);
 		
-		JButton btnBuscar = new JButton("Buscar Ator");
-		btnBuscar.setBounds(432, 100, 170, 20);
+		JButton btnBuscar = new JButton("Pesquisar");
+		btnBuscar.setBounds(346, 108, 114, 23);
 		atorInicio.add(btnBuscar, "btnBuscar");
 		
-		JLabel lblNewLabel = new JLabel("ID do ator");
-		lblNewLabel.setBounds(306, 75, 103, 14);
+		JLabel lblNewLabel = new JLabel("ID");
+		lblNewLabel.setBounds(279, 112, 16, 14);
 		atorInicio.add(lblNewLabel);
 		
-		JButton btnCriar = new JButton("Criar");
+		JButton btnCriar = new JButton("Cadastrar");
 		btnCriar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JPanel atorUpdate = new AtorCria();
@@ -54,8 +55,13 @@ public class AtorIndex extends JPanel {
 				atorCard.show(atorPanelCards, "Cria");
 			}
 		});
-		btnCriar.setBounds(292, 126, 89, 23);
+		btnCriar.setBounds(472, 108, 96, 23);
 		atorInicio.add(btnCriar);
+		
+		JLabel lblAtor = new JLabel("Ator");
+		lblAtor.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblAtor.setBounds(377, 57, 63, 20);
+		atorInicio.add(lblAtor);
 		
 		
 		

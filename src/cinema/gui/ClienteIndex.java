@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
+import java.awt.Font;
 
 public class ClienteIndex extends JPanel {
 	
@@ -31,31 +32,36 @@ public class ClienteIndex extends JPanel {
 		
 		
 		buscarTextField = new JTextField();
-		buscarTextField.setBounds(327, 100, 124, 20);
+		buscarTextField.setBounds(295, 109, 41, 20);
 		ClienteInicio.add(buscarTextField, "buscarTextField");
 		
 		buscarTextField.setColumns(10);
 		
-		JButton btnBuscar = new JButton("Buscar Cliente");
-		btnBuscar.setBounds(462, 100, 170, 20);
+		JButton btnBuscar = new JButton("Pesquisar");
+		btnBuscar.setBounds(346, 108, 114, 23);
 		ClienteInicio.add(btnBuscar, "btnBuscar");
 		
 		JLabel lblId = new JLabel("ID");
-		lblId.setBounds(361, 75, 46, 14);
+		lblId.setBounds(279, 112, 16, 14);
 		ClienteInicio.add(lblId);
 		
-		JButton btnCriar = new JButton("Criar");
+		JButton btnCriar = new JButton("Cadastrar");
 		btnCriar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JPanel clienteUpdate = new ClienteCria();
-				clienteUpdate.setBounds(0, 75, 884, 389);
-				ClientePanelCards.add(clienteUpdate, "Buscar");
+				JPanel clienteCria = new ClienteCria();
+				clienteCria.setBounds(0, 75, 884, 389);
+				ClientePanelCards.add(clienteCria, "Buscar");
 				ClienteInicio.setVisible(false);
 				clienteCard.show(ClientePanelCards, "Criar");
 			}
 		});
-		btnCriar.setBounds(347, 131, 89, 23);
+		btnCriar.setBounds(472, 108, 96, 23);
 		ClienteInicio.add(btnCriar);
+		
+		JLabel lblCliente = new JLabel("Cliente");
+		lblCliente.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblCliente.setBounds(377, 57, 63, 20);
+		ClienteInicio.add(lblCliente);
 		
 		
 		

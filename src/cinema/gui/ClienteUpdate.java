@@ -38,9 +38,10 @@ public class ClienteUpdate extends JPanel {
 		add(btnUpdate);
 		
 		codigoField = new JTextField();
+		codigoField.setEditable(false);
 		codigoField.setText((String) null);
 		codigoField.setColumns(10);
-		codigoField.setBounds(363, 82, 184, 20);
+		codigoField.setBounds(363, 82, 59, 20);
 		add(codigoField);
 		
 		nomeField = new JTextField();
@@ -49,7 +50,6 @@ public class ClienteUpdate extends JPanel {
 		nomeField.setColumns(10);
 		
 		cpfField = new JTextField();
-		cpfField.setEditable(false);
 		cpfField.setBounds(363, 135, 184, 20);
 		add(cpfField);
 		cpfField.setColumns(10);
@@ -84,21 +84,12 @@ public class ClienteUpdate extends JPanel {
 					    JOptionPane.YES_NO_OPTION);
 				if (n==0){
 					ClienteController.delete(cliente.getCodigo());
-					cliente.setCodigo("");
-					cliente.setCpf("");
-					cliente.setNome("");
+					JOptionPane.showMessageDialog(null, "Cliente deletado com sucesso.", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
 				}
 			}
 		});
 		btnDelete.setBounds(458, 166, 89, 23);
 		add(btnDelete);
-		
-		
-		
-		
-		
-		
-	
 		
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -113,6 +104,7 @@ public class ClienteUpdate extends JPanel {
 				cliente.setCpf(cpfField.getText());
 				cliente.setNome(nomeField.getText());
 				ClienteController.update(cliente);
+				JOptionPane.showMessageDialog(null, "Cliente atualizado com sucesso.", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
 				}
 				
 				

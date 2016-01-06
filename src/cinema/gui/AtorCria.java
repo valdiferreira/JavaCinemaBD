@@ -5,10 +5,12 @@ import java.awt.EventQueue;
 import cinema.controllers.*;
 
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
@@ -68,6 +70,7 @@ public class AtorCria extends JPanel {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AtorController.create(codigoField.getText(), nomeField.getText(), nacionalidadeField.getText(), dataField.getText());
+				JOptionPane.showMessageDialog(null, "Ator cadastrado com sucesso.", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
 		btnNewButton.setBounds(338, 207, 97, 23);
