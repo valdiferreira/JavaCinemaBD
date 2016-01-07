@@ -124,7 +124,34 @@ public class ClienteDAO {
 		
 		
 		}
-	
-	
+	}
+	public static void Telefone(String codigo, String numero){
+		PreparedStatement pst=null;		
+		
+		String sql=("INSERT INTO CLIENTE_TELEFONE (COD_CLIENTE, TELEFONE) VALUES ('"+codigo+"', '"+numero+"')");
+		
+		try {
+			pst = Conexao.executaStatement(sql);
+			pst.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			Conexao.fechaConexaoBanco();
+			Conexao.fechaPreparedStatement();
+		}
+	}
+	public static void Del_Telefone(String codigo, String numero){
+		PreparedStatement pst=null;		
+		String sql=("DELETE CLIENTE_TELEFONE WHERE COD_CLIENTE = "+codigo+" AND TELEFONE = "+numero+"");
+
+		try {
+			pst = Conexao.executaStatement(sql);
+			pst.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			Conexao.fechaConexaoBanco();
+			Conexao.fechaPreparedStatement();
+		}
 	}
 }

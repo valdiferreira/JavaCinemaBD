@@ -13,12 +13,12 @@ public class SalaController {
 		SalaDAO.Create(sala);
 	}
 	
-	public static void delete(String numero){
-		SalaDAO.Delete(numero);
+	public static void delete(String n_sala, String c_cinema){
+		SalaDAO.Delete(n_sala, c_cinema);
 	}
 	
-	public static Sala busca(String numero){
-		return SalaDAO.Busca(numero);
+	public static Sala busca(String n_sala, String c_cinema){
+		return SalaDAO.Busca(n_sala, c_cinema);
 	}
 	
 	public static void update(Sala sala){

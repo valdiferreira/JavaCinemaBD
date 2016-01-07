@@ -4,10 +4,12 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.EventQueue;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 import javax.swing.JButton;
+
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
@@ -24,6 +26,8 @@ public class TelaPrincipal extends JFrame {
 				try {
 					TelaPrincipal frame = new TelaPrincipal();
 					frame.setVisible(true);
+					frame.setIconImage(new ImageIcon(getClass().getResource("/Movies-icon.png")).getImage());
+					frame.setTitle("Sistema de Gest\u00E3o de Dados");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -35,6 +39,7 @@ public class TelaPrincipal extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaPrincipal() {
+		
 		CardLayout cards_Index = new CardLayout();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 600);
@@ -94,5 +99,38 @@ public class TelaPrincipal extends JFrame {
 		});
 		btnDiretor.setBounds(298, 0, 89, 23);
 		contentPane.add(btnDiretor);
+		
+		JButton btnFuncionario = new JButton("Funcion\u00E1rio");
+		btnFuncionario.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JPanel funcionarioIndex = new FuncionarioIndex();
+				Index.add(funcionarioIndex, "FuncionarioIndex");
+				cards_Index.show(Index,"FuncionarioIndex");
+			}
+		});
+		btnFuncionario.setBounds(397, 0, 111, 23);
+		contentPane.add(btnFuncionario);
+		
+		JButton btnSala = new JButton("Sala");
+		btnSala.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JPanel salaIndex = new SalaIndex();
+				Index.add(salaIndex, "SalaIndex");
+				cards_Index.show(Index,"SalaIndex");
+			}
+		});
+		btnSala.setBounds(518, 0, 89, 23);
+		contentPane.add(btnSala);
+		
+		JButton btnCompra = new JButton("Compra");
+		btnCompra.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JPanel compraIndex = new CompraIndex();
+				Index.add(compraIndex, "CompraIndex");
+				cards_Index.show(Index,"CompraIndex");
+			}
+		});
+		btnCompra.setBounds(614, 0, 89, 23);
+		contentPane.add(btnCompra);
 	}
 }

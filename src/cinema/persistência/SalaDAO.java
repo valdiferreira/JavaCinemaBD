@@ -20,9 +20,9 @@ public class SalaDAO {
 		}
 	}
 	
-	public static void Delete(String numero){
+	public static void Delete(String n_sala, String c_cinema){
 		PreparedStatement pst = null;
-		String sql = ("DELETE SALA WHERE NUMERO = "+numero);
+		String sql = ("DELETE SALA WHERE NUMERO = "+n_sala+" AND COD_CINEMA = "+c_cinema);
 		try {
 			pst = Conexao.executaStatement(sql);
 			pst.execute();
@@ -34,10 +34,10 @@ public class SalaDAO {
 		}
 	}
 	
-	public static Sala Busca(String numero){
+	public static Sala Busca(String n_sala, String c_cinema){
 		Sala sala = new Sala();
 		PreparedStatement pst = null;
-		String sql = ("SELECT * FROM SALA WHERE NUMERO = "+numero);
+		String sql = ("SELECT * FROM SALA WHERE NUMERO = "+n_sala+" AND COD_CINEMA = "+c_cinema);
 		ResultSet rs;
 		try {
 			pst = Conexao.executaStatement(sql);
@@ -58,7 +58,7 @@ public class SalaDAO {
 	
 	public static void Update(Sala sala){
 		PreparedStatement pst = null;
-		String sql = ("UPDATE SALA SET COD_CINEMA = "+sala.getCod_cinema()+", QTD_ASSENTOS = "+sala.getQtd_assentos()+" WHERE NUMERO = "+sala.getNumero());
+		String sql = ("UPDATE SALA SET QTD_ASSENTOS = "+sala.getQtd_assentos()+" WHERE NUMERO = "+sala.getNumero()+" AND COD_CINEMA = "+sala.getCod_cinema());
 		try {
 			pst = Conexao.executaStatement(sql);
 			pst.execute();

@@ -8,6 +8,7 @@ public class Compra {
 	private String cod_cliente;
 	private String cod_sessao;
 	private String data_hora;
+	
 	public String getCodigo() {
 		return codigo;
 	}
@@ -17,8 +18,8 @@ public class Compra {
 	public String getValor_total() {
 		return valor_total;
 	}
-	public void setValor_total(String string) {
-		this.valor_total = string;
+	public void setValor_total(String valor_total) {
+		this.valor_total = valor_total;
 	}
 	public String getForma_pagameto() {
 		return forma_pagameto;

@@ -28,6 +28,11 @@ public class ClienteController {
 	public static Cliente busca(String codigo){
 		return ClienteDAO.Busca(codigo);
 	}
-	
+	public static void telefone(String codigo, String numero){
+		ClienteDAO.Telefone(codigo, numero);
+	}
+	public static void del_telefone(String codigo, String numero){
+		ClienteDAO.Del_Telefone(codigo, numero);
+	}
 	
 }
