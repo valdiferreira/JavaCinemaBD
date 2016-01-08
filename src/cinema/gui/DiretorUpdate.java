@@ -24,7 +24,8 @@ public class DiretorUpdate extends JPanel {
 		JButton btnUpdate = new JButton("Atualizar");
 		btnUpdate.setBounds(363, 166, 87, 23);
 		add(btnUpdate);
-		
+		btnUpdate.setBorder(new RoundedBorder(5));
+		 
 		JTextField codigoField = new JTextField();
 		codigoField.setEditable(false);
 		codigoField.setText((String) null);
@@ -78,6 +79,7 @@ public class DiretorUpdate extends JPanel {
 		});
 		btnDelete.setBounds(458, 166, 89, 23);
 		add(btnDelete);
+		btnDelete.setBorder(new RoundedBorder(5));
 		
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

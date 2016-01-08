@@ -15,7 +15,9 @@ import java.awt.event.ActionEvent;
 import java.awt.FlowLayout;
 
 import javax.swing.JLabel;
+
 import java.awt.Font;
+import javax.swing.ImageIcon;
 
 public class ClienteUpdate extends JPanel {
 	private String codidoCliente;
@@ -37,8 +39,10 @@ public class ClienteUpdate extends JPanel {
 		setLayout(null);
 
 		JButton btnUpdate = new JButton("Atualizar");
+		btnUpdate.setIcon(new ImageIcon("img/atualizar.png"));
 		btnUpdate.setBounds(327, 166, 87, 23);
 		add(btnUpdate);
+		btnUpdate.setBorder(new RoundedBorder(5));
 		
 		codigoField = new JTextField();
 		codigoField.setEditable(false);
@@ -79,6 +83,7 @@ public class ClienteUpdate extends JPanel {
 		add(lblCpf);
 		
 		JButton btnDelete = new JButton("Deletar");
+		btnDelete.setIcon(new ImageIcon("img/delete.png"));
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int n = JOptionPane.showConfirmDialog(
@@ -94,6 +99,7 @@ public class ClienteUpdate extends JPanel {
 		});
 		btnDelete.setBounds(422, 166, 89, 23);
 		add(btnDelete);
+		btnDelete.setBorder(new RoundedBorder(5));
 		
 		JLabel lblCadastrarNumero = new JLabel("Cadastrar Numero Telefonico");
 		lblCadastrarNumero.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -121,6 +127,7 @@ public class ClienteUpdate extends JPanel {
 		numeroFoneField.setColumns(10);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setIcon(new ImageIcon("img/register.png"));
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ClienteController.telefone(idFoneField.getText(), numeroFoneField.getText());
@@ -129,8 +136,10 @@ public class ClienteUpdate extends JPanel {
 		});
 		btnCadastrar.setBounds(567, 134, 100, 23);
 		add(btnCadastrar);
+		btnCadastrar.setBorder(new RoundedBorder(5));
 		
 		JButton btnDeletar = new JButton("Deletar");
+		btnDeletar.setIcon(new ImageIcon("img/delete.png"));
 		btnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ClienteController.del_telefone(idFoneField.getText(), numeroFoneField.getText());
@@ -139,6 +148,7 @@ public class ClienteUpdate extends JPanel {
 		});
 		btnDeletar.setBounds(677, 134, 89, 23);
 		add(btnDeletar);
+		btnDeletar.setBorder(new RoundedBorder(5));
 		
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {

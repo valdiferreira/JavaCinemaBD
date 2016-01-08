@@ -51,6 +51,7 @@ public class ClienteIndex extends JPanel {
 		btnBuscar.setIcon(new ImageIcon("img/search.png"));
 		btnBuscar.setBounds(346, 108, 114, 23);
 		ClienteInicio.add(btnBuscar, "btnBuscar");
+		btnBuscar.setBorder(new RoundedBorder(5));
 		
 		JLabel lblId = new JLabel("ID");
 		lblId.setBounds(279, 112, 16, 14);
@@ -69,6 +70,7 @@ public class ClienteIndex extends JPanel {
 		});
 		btnCriar.setBounds(472, 108, 114, 23);
 		ClienteInicio.add(btnCriar);
+		btnCriar.setBorder(new RoundedBorder(5));
 		
 		JLabel lblCliente = new JLabel("Cliente");
 		lblCliente.setFont(new Font("Tahoma", Font.BOLD, 15));

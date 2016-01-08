@@ -19,6 +19,7 @@ import java.util.ArrayList;
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
 
 public class AtorIndex extends JPanel {
 	
@@ -32,13 +33,10 @@ public class AtorIndex extends JPanel {
 		CardLayout atorCard = new CardLayout(0,0);
 		JPanel atorPanelCards=new JPanel();
 		this.setBounds(0,75,884,389);
-		atorPanelCards.setBounds(0, 75, 884, 389);
-		add(atorPanelCards);
-		atorPanelCards.setLayout(atorCard);
-		atorCard.show(atorPanelCards, "atorInicio");
 		
 		JPanel atorInicio = new JPanel();
-		atorPanelCards.add(atorInicio, "name_143698387695044");
+		atorInicio.setBounds(0, 0, 884, 389);
+		add(atorInicio);
 		atorInicio.setLayout(null);
 		
 		
@@ -52,6 +50,7 @@ public class AtorIndex extends JPanel {
 		btnBuscar.setIcon(new ImageIcon("img/search.png"));
 		btnBuscar.setBounds(346, 108, 114, 23);
 		atorInicio.add(btnBuscar, "btnBuscar");
+		btnBuscar.setBorder(new RoundedBorder(5));
 		
 		JLabel lblNewLabel = new JLabel("ID");
 		lblNewLabel.setBounds(279, 112, 16, 14);
@@ -61,40 +60,21 @@ public class AtorIndex extends JPanel {
 		btnCriar.setIcon(new ImageIcon("img/register.png"));
 		btnCriar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JPanel atorUpdate = new AtorCria();
-				atorUpdate.setBounds(0, 75, 884, 389);
-				atorPanelCards.add(atorUpdate, "Buscar");
+				JPanel atorCria = new AtorCria();
+				atorCria.setBounds(0, 75, 884, 389);
+				atorPanelCards.add(atorCria, "Buscar");
 				atorInicio.setVisible(false);
-				atorCard.show(atorPanelCards, "Cria");
+				atorCard.show(atorPanelCards, "Criar");
 			}
 		});
 		btnCriar.setBounds(472, 108, 114, 23);
 		atorInicio.add(btnCriar);
+		btnCriar.setBorder(new RoundedBorder(5));
 		
 		JLabel lblAtor = new JLabel("Ator");
 		lblAtor.setFont(new Font("Tahoma", Font.BOLD, 15));
 		lblAtor.setBounds(377, 57, 63, 20);
 		atorInicio.add(lblAtor);
-		
-		//Colunas da tabela
-		String[] colunas = new String[]{"Codigo","Nome","Nacionalidade","Data"};
-		
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(126, 157, 597, 115);
-		atorInicio.add(scrollPane);
-		DefaultTableModel date = new DefaultTableModel(colunas, 0);
-		JTable table = new JTable();
-		table.setModel(date);
-		scrollPane.setViewportView(table);
-		
-		//Linhas da tabela
-		ArrayList<String> dados = new ArrayList<String>();
-		dados = AtorController.listar();
-		String[] linha;
-		for(int i = 0; i < dados.size(); i++){
-			linha = dados.get(i).split(";");
-			date.addRow(linha);
-		}
 		
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -105,7 +85,30 @@ public class AtorIndex extends JPanel {
 				atorCard.show(atorPanelCards, "Dados");
 			}
 		});
+		atorPanelCards.setBounds(0, 75, 884, 389);
+		add(atorPanelCards);
+		atorPanelCards.setLayout(atorCard);
+		atorCard.show(atorPanelCards, "atorInicio");
 		
+		//Colunas da tabela
+		String[] colunas = new String[]{"Codigo","Nome","Nacionalidade","Data"};
+		DefaultTableModel date = new DefaultTableModel(colunas, 0);
+		
+		//Linhas da tabela
+		ArrayList<String> dados = new ArrayList<String>();
+		dados = AtorController.listar();
+		String[] linha;
+		for(int i = 0; i < dados.size(); i++){
+			linha = dados.get(i).split(";");
+			date.addRow(linha);
+		}
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(126, 157, 597, 115);
+		atorInicio.add(scrollPane);
+		JTable table = new JTable();
+		table.setModel(date);
+		scrollPane.setViewportView(table);
 
 	}
 }

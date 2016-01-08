@@ -138,6 +138,7 @@ public class FilmeUpdate extends JPanel {
 		});
 		btnAtualizar.setBounds(121, 189, 89, 23);
 		add(btnAtualizar);
+		btnAtualizar.setBorder(new RoundedBorder(5));
 		
 		JButton btnAdicionarAtor = new JButton("Adicionar");
 		btnAdicionarAtor.addActionListener(new ActionListener() {
@@ -148,6 +149,7 @@ public class FilmeUpdate extends JPanel {
 		});
 		btnAdicionarAtor.setBounds(599, 105, 97, 23);
 		add(btnAdicionarAtor);
+		btnAdicionarAtor.setBorder(new RoundedBorder(5));
 		
 		JButton btnDeletar = new JButton("Deletar");
 		btnDeletar.addActionListener(new ActionListener() {
@@ -158,6 +160,7 @@ public class FilmeUpdate extends JPanel {
 		});
 		btnDeletar.setBounds(225, 189, 89, 23);
 		add(btnDeletar);
+		btnDeletar.setBorder(new RoundedBorder(5));
 		
 		generoField.setText(filme.getGenero());
 		anoField.setText(filme.getAno().substring(0,10));
@@ -199,15 +202,15 @@ public class FilmeUpdate extends JPanel {
 		
 		codigoFilmeField.setText(filme.getCodigo());
 		
-		JButton btnNewButton = new JButton("Deletar");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnDelete = new JButton("Deletar");
+		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				FilmeController.del_ator(filme.getCodigo(), codigoAtorField.getText());
 				JOptionPane.showMessageDialog(null, "Ator deletado do filme com sucesso.", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		btnNewButton.setBounds(706, 105, 79, 23);
-		add(btnNewButton);		
-
+		btnDelete.setBounds(706, 105, 79, 23);
+		add(btnDelete);
+		btnDelete.setBorder(new RoundedBorder(5));
 	}
 }

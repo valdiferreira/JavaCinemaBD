@@ -62,6 +62,11 @@ public class TelaPrincipal extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JLabel lblCapa = new JLabel("");
+		lblCapa.setIcon(new ImageIcon("img/cinema.png"));
+		lblCapa.setBounds(204, 152, 500, 310);
+		contentPane.add(lblCapa);
+		
 		JPanel Index = new JPanel();
 		Index.setBounds(0, 75, 884, 389);
 		contentPane.add(Index);
@@ -70,7 +75,6 @@ public class TelaPrincipal extends JFrame {
 		
 		JButton btnCliente = new JButton("Cliente");
 		btnCliente.setIcon(new ImageIcon("img/cliente.png"));
-		//frame.setIconImage(new ImageIcon(getClass().getResource("/Movies-icon.png")).getImage());
 		btnCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				

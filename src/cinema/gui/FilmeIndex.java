@@ -63,6 +63,7 @@ public class FilmeIndex extends JPanel {
 		});
 		btnPesquisar.setBounds(346, 108, 114, 23);
 		FilmeInicio.add(btnPesquisar);
+		btnPesquisar.setBorder(new RoundedBorder(5));
 		
 		JButton btnCriar = new JButton("Cadastrar");
 		btnCriar.setIcon(new ImageIcon("img/register.png"));
@@ -77,6 +78,7 @@ public class FilmeIndex extends JPanel {
 		});
 		btnCriar.setBounds(472, 108, 114, 23);
 		FilmeInicio.add(btnCriar);
+		btnCriar.setBorder(new RoundedBorder(5));
 		
 		JLabel lblFilme = new JLabel("Filme");
 		lblFilme.setFont(new Font("Tahoma", Font.BOLD, 15));

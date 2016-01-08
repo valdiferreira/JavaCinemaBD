@@ -57,6 +57,7 @@ public class DiretorIndex extends JPanel {
 		});
 		btnPesquisar.setBounds(346, 108, 114, 23);
 		DiretorInicio.add(btnPesquisar);
+		btnPesquisar.setBorder(new RoundedBorder(5));
 		
 		JButton btnCriar = new JButton("Cadastrar");
 		btnCriar.setIcon(new ImageIcon("img/register.png"));
@@ -71,6 +72,7 @@ public class DiretorIndex extends JPanel {
 		});
 		btnCriar.setBounds(472, 108, 114, 23);
 		DiretorInicio.add(btnCriar);
+		btnCriar.setBorder(new RoundedBorder(5));
 		
 		JLabel lblDiretor = new JLabel("Diretor");
 		lblDiretor.setFont(new Font("Tahoma", Font.BOLD, 15));

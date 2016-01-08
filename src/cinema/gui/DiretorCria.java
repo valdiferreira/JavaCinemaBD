@@ -60,15 +60,17 @@ public class DiretorCria extends JPanel {
 		label_2.setBounds(253, 132, 46, 14);
 		add(label_2);
 		
-		JButton buttonCriar = new JButton("Cadastrar");
-		buttonCriar.addActionListener(new ActionListener() {
+		JButton btnCriar = new JButton("Cadastrar");
+		btnCriar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DiretorController.create(codigoField.getText(), nomeField.getText(), nacionalidadeField.getText());
 				JOptionPane.showMessageDialog(null, "Diretor cadastrado com sucesso.", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		buttonCriar.setBounds(338, 185, 97, 23);
-		add(buttonCriar);
+		btnCriar.setBounds(338, 185, 97, 23);
+		add(btnCriar);
+		btnCriar.setBorder(new RoundedBorder(5));
+		
 		
 		
 	}

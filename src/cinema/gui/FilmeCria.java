@@ -121,6 +121,7 @@ public class FilmeCria extends JPanel {
 		});
 		btnCadastrar.setBounds(436, 265, 132, 23);
 		add(btnCadastrar);
+		btnCadastrar.setBorder(new RoundedBorder(5));
 		
 		cod_diretorField = new JTextField();
 		cod_diretorField.setBounds(238, 57, 86, 20);

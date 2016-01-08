@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.FlowLayout;
+
 import javax.swing.JLabel;
 
 public class AtorUpdate extends JPanel {
@@ -63,9 +64,29 @@ public class AtorUpdate extends JPanel {
 		nacionalidadeField.setText(ator.getNacionalidade());
 
 		
-		JButton btnNewButton = new JButton("Atualizar");
-		btnNewButton.setBounds(333, 223, 89, 20);
-		add(btnNewButton);
+		JButton btnUpdate = new JButton("Atualizar");
+		btnUpdate.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				int n = JOptionPane.showConfirmDialog(
+					    getComponent(0),
+					    "Você deseja mesmo atualizar?",
+					    "Confirmação",
+					    JOptionPane.YES_NO_OPTION);
+				if (n==0){
+				ator.setCodigo(codidoAtor);
+				ator.setNome(nomeField.getText());
+				ator.setData(dataField.getText());
+				ator.setNacionalidade(nacionalidadeField.getText());
+				AtorController.update(ator);
+				JOptionPane.showMessageDialog(null, "Ator atualizado com sucesso.", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+				}
+				
+				
+			}
+		});
+		btnUpdate.setBounds(333, 223, 89, 20);
+		add(btnUpdate);
+		btnUpdate.setBorder(new RoundedBorder(5));
 		
 		lblNome = new JLabel("Nome");
 		lblNome.setBounds(287, 103, 46, 14);
@@ -99,32 +120,11 @@ public class AtorUpdate extends JPanel {
 		});
 		btnDelete.setBounds(427, 223, 77, 20);
 		add(btnDelete);
+		btnDelete.setBorder(new RoundedBorder(5));
 		
 		JLabel lblExAaaa = new JLabel("Ex: AAAA-MM-DD (2015-12-23)");
 		lblExAaaa.setBounds(514, 164, 209, 14);
 		add(lblExAaaa);
-		
-		
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent arg0) {
-				int n = JOptionPane.showConfirmDialog(
-					    getComponent(0),
-					    "Você deseja mesmo atualizar?",
-					    "Confirmação",
-					    JOptionPane.YES_NO_OPTION);
-				if (n==0){
-				ator.setCodigo(codidoAtor);
-				ator.setNome(nomeField.getText());
-				ator.setData(dataField.getText());
-				ator.setNacionalidade(nacionalidadeField.getText());
-				AtorController.update(ator);
-				JOptionPane.showMessageDialog(null, "Ator atualizado com sucesso.", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
-				}
-				
-				
-			}
-		});
-		
 		
 	}
 }

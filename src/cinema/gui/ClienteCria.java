@@ -13,6 +13,8 @@ import cinema.controllers.*;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
+import java.awt.Font;
 
 public class ClienteCria extends JPanel {
 
@@ -27,42 +29,48 @@ public class ClienteCria extends JPanel {
 		setLayout(null);
 		
 		nomeField = new JTextField();
-		nomeField.setBounds(366, 102, 180, 20);
+		nomeField.setBounds(366, 105, 180, 20);
 		add(nomeField);
 		nomeField.setColumns(10);
 		
 		JLabel lblNewLabel = new JLabel("NOME");
-		lblNewLabel.setBounds(291, 105, 46, 14);
+		lblNewLabel.setBounds(330, 107, 35, 14);
 		add(lblNewLabel);
 		
 		codigoField = new JTextField();
 		codigoField.setColumns(10);
-		codigoField.setBounds(366, 133, 35, 20);
+		codigoField.setBounds(366, 130, 35, 20);
 		add(codigoField);
 		
 		JLabel lblNome = new JLabel("CODIGO");
-		lblNome.setBounds(291, 136, 46, 14);
+		lblNome.setBounds(319, 133, 46, 14);
 		add(lblNome);
 		
 		cpfField = new JTextField();
 		cpfField.setColumns(10);
-		cpfField.setBounds(366, 164, 180, 20);
+		cpfField.setBounds(366, 154, 180, 20);
 		add(cpfField);
 		
 		JLabel lblCpf = new JLabel("CPF");
-		lblCpf.setBounds(291, 167, 46, 14);
+		lblCpf.setBounds(339, 157, 26, 14);
 		add(lblCpf);
 		
-		JButton btnCriar = new JButton("Criar");
+		JButton btnCriar = new JButton("Cadastrar");
+		btnCriar.setIcon(new ImageIcon("img/register.png"));
 		btnCriar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				ClienteController.create(nomeField.getText(), cpfField.getText(), codigoField.getText());
 				JOptionPane.showMessageDialog(null, "Cliente criado com sucesso.", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		btnCriar.setBounds(418, 205, 89, 23);
+		btnCriar.setBounds(398, 185, 89, 23);
 		add(btnCriar);
+		btnCriar.setBorder(new RoundedBorder(5));
+		
+		JLabel lblCadastrarCliente = new JLabel("Cadastrar Cliente");
+		lblCadastrarCliente.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblCadastrarCliente.setBounds(366, 64, 151, 14);
+		add(lblCadastrarCliente);
 		
 	}
-
 }

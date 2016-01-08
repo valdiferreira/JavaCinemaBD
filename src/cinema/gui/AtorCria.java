@@ -66,15 +66,16 @@ public class AtorCria extends JPanel {
 		add(nacionalidadeField);
 		nacionalidadeField.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Criar");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnCriar = new JButton("Cadastrar");
+		btnCriar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AtorController.create(codigoField.getText(), nomeField.getText(), nacionalidadeField.getText(), dataField.getText());
 				JOptionPane.showMessageDialog(null, "Ator cadastrado com sucesso.", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		btnNewButton.setBounds(338, 207, 97, 23);
-		add(btnNewButton);
+		btnCriar.setBounds(338, 207, 97, 23);
+		add(btnCriar);
+		btnCriar.setBorder(new RoundedBorder(5));
 		
 		JLabel lblCadastrarAtor = new JLabel("Cadastrar Ator");
 		lblCadastrarAtor.setFont(new Font("Arial", Font.BOLD, 18));
