@@ -1,5 +1,7 @@
 package cinema.controllers;
 
+import java.util.ArrayList;
+
 import cinema.dominio.Ator;
 import cinema.persistência.AtorDAO;
 
@@ -21,5 +23,8 @@ public class AtorController {
 	}
 	public static void update(Ator ator){
 		AtorDAO.Update(ator);
+	}
+	public static ArrayList<String> listar(){
+		return AtorDAO.Listar();
 	}
 }

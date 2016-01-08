@@ -14,6 +14,13 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
 import java.awt.Font;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableModel;
 
 public class ClienteIndex extends JPanel {
 	
@@ -68,7 +75,25 @@ public class ClienteIndex extends JPanel {
 		lblCliente.setBounds(377, 57, 63, 20);
 		ClienteInicio.add(lblCliente);
 		
+		//Colunas da tabela
+		String[] colunas = new String[]{"Codigo","Nome","CPF"};
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(204, 157, 484, 115);
+		ClienteInicio.add(scrollPane);
+		DefaultTableModel date = new DefaultTableModel(colunas, 0);
+		JTable table = new JTable();
+		table.setModel(date);
+		scrollPane.setViewportView(table);
+		
+		//Linhas da tabela
+		ArrayList<String> dados = new ArrayList<String>();
+		dados = ClienteController.listar();
+		String[] linha;
+		for(int i = 0; i < dados.size(); i++){
+			linha = dados.get(i).split(";");
+			date.addRow(linha);
+		}
 		
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {

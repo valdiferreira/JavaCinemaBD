@@ -1,5 +1,7 @@
 package cinema.controllers;
 
+import java.util.ArrayList;
+
 import cinema.dominio.Filme;
 import cinema.persistência.FilmeDAO;
 
@@ -32,8 +34,11 @@ public class FilmeController {
 	public static void add_ator(String cod_filme, String cod_ator){
 		FilmeDAO.Add_Ator(cod_filme, cod_ator);
 	}
-	//MEtodo para deletar ator a filme.
+	//Metodo para deletar ator a filme.
 	public static void del_ator(String cod_filme, String cod_ator){
 		FilmeDAO.Del_Ator(cod_filme, cod_ator);
+	}
+	public static ArrayList<String> listar(){
+		return FilmeDAO.Listar();
 	}
 }

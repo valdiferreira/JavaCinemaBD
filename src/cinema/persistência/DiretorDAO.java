@@ -1,6 +1,7 @@
 package cinema.persistência;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 import cinema.dominio.Diretor;
 
@@ -69,5 +70,25 @@ public class DiretorDAO {
 			Conexao.fechaPreparedStatement();
 		}
 	}
-
+	public static ArrayList<String> Listar(){
+		ArrayList<String> dados = new ArrayList<String>();
+		PreparedStatement pst=null;		
+		ResultSet rs;
+		String sql=("SELECT * FROM DIRETOR");
+		
+		try {
+			pst = Conexao.executaStatement(sql);
+			rs=pst.executeQuery();
+			while (rs.next()){
+				dados.add(rs.getString("CODIGO")+";"+rs.getString("NOME")+";"+rs.getString("NACIONALIDADE"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			Conexao.fechaConexaoBanco();
+			Conexao.fechaPreparedStatement();
+		}
+		
+		return dados;
+	}
 }

@@ -3,6 +3,7 @@ package cinema.gui;
 import java.awt.CardLayout;
 import java.awt.EventQueue;
 
+import cinema.controllers.AtorController;
 import cinema.controllers.ClienteController;
 import cinema.controllers.FilmeController;
 import cinema.dominio.*;
@@ -10,13 +11,17 @@ import cinema.dominio.*;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
+import javax.swing.table.DefaultTableModel;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.util.ArrayList;
 
 public class FilmeIndex extends JPanel {
 
@@ -82,6 +87,26 @@ public class FilmeIndex extends JPanel {
 		add(FilmePanelCards);
 		FilmePanelCards.setLayout(filmeCard);
 		filmeCard.show(FilmePanelCards, "FilmeInicio");
+		
+		//Colunas da tabela
+		String[] colunas = new String[]{"Codigo","Codigo do Diretor","Lançamento","Genero","Tipo","Titulo Original","Titulo Português"};
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(10, 157, 864, 84);
+		FilmeInicio.add(scrollPane);
+		DefaultTableModel date = new DefaultTableModel(colunas, 0);
+		JTable table = new JTable();
+		table.setModel(date);
+		scrollPane.setViewportView(table);
+		
+		//Linhas da tabela
+		ArrayList<String> dados = new ArrayList<String>();
+		dados = FilmeController.listar();
+		String[] linha;
+		for(int i = 0; i < dados.size(); i++){
+			linha = dados.get(i).split(";");
+			date.addRow(linha);
+		}
 		
 	}
 }

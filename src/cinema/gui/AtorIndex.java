@@ -14,6 +14,11 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
 import java.awt.Font;
+import java.util.ArrayList;
+
+import javax.swing.JTable;
+import javax.swing.JScrollPane;
+import javax.swing.table.DefaultTableModel;
 
 public class AtorIndex extends JPanel {
 	
@@ -27,10 +32,13 @@ public class AtorIndex extends JPanel {
 		CardLayout atorCard = new CardLayout(0,0);
 		JPanel atorPanelCards=new JPanel();
 		this.setBounds(0,75,884,389);
+		atorPanelCards.setBounds(0, 75, 884, 389);
+		add(atorPanelCards);
+		atorPanelCards.setLayout(atorCard);
+		atorCard.show(atorPanelCards, "atorInicio");
 		
 		JPanel atorInicio = new JPanel();
-		atorInicio.setBounds(0, 75, 884, 389);
-		add(atorInicio);
+		atorPanelCards.add(atorInicio, "name_143698387695044");
 		atorInicio.setLayout(null);
 		
 		
@@ -68,7 +76,25 @@ public class AtorIndex extends JPanel {
 		lblAtor.setBounds(377, 57, 63, 20);
 		atorInicio.add(lblAtor);
 		
+		//Colunas da tabela
+		String[] colunas = new String[]{"Codigo","Nome","Nacionalidade","Data"};
 		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(126, 157, 597, 115);
+		atorInicio.add(scrollPane);
+		DefaultTableModel date = new DefaultTableModel(colunas, 0);
+		JTable table = new JTable();
+		table.setModel(date);
+		scrollPane.setViewportView(table);
+		
+		//Linhas da tabela
+		ArrayList<String> dados = new ArrayList<String>();
+		dados = AtorController.listar();
+		String[] linha;
+		for(int i = 0; i < dados.size(); i++){
+			linha = dados.get(i).split(";");
+			date.addRow(linha);
+		}
 		
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -79,10 +105,6 @@ public class AtorIndex extends JPanel {
 				atorCard.show(atorPanelCards, "Dados");
 			}
 		});
-		atorPanelCards.setBounds(0, 75, 884, 389);
-		add(atorPanelCards);
-		atorPanelCards.setLayout(atorCard);
-		atorCard.show(atorPanelCards, "atorInicio");
 		
 
 	}

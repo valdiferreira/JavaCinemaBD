@@ -3,20 +3,25 @@ package cinema.gui;
 import java.awt.CardLayout;
 import java.awt.EventQueue;
 
+import cinema.controllers.AtorController;
 import cinema.controllers.FilmeController;
 import cinema.dominio.*;
 
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
 import javax.swing.JButton;
+import javax.swing.table.DefaultTableModel;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import java.util.ArrayList;
 
 public class FilmeUpdate extends JPanel {
 
@@ -202,7 +207,7 @@ public class FilmeUpdate extends JPanel {
 			}
 		});
 		btnNewButton.setBounds(706, 105, 79, 23);
-		add(btnNewButton);
-		
+		add(btnNewButton);		
+
 	}
 }

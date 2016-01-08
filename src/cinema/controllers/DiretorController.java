@@ -1,5 +1,7 @@
 package cinema.controllers;
 
+import java.util.ArrayList;
+
 import cinema.dominio.Diretor;
 import cinema.persistência.DiretorDAO;
 
@@ -19,5 +21,8 @@ public class DiretorController {
 	}
 	public static void update(Diretor diretor){
 		DiretorDAO.Update(diretor);
+	}
+	public static ArrayList<String> listar(){
+		return DiretorDAO.Listar();
 	}
 }

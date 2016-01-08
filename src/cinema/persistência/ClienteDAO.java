@@ -29,9 +29,6 @@ public class ClienteDAO {
 		
 	}	
 	
-	
-	
-	
 	public static void Delete(String codigo){
         PreparedStatement pst=null;		
 		
@@ -48,9 +45,8 @@ public class ClienteDAO {
 		}
 		
 	}
-	public static List listaCliente (){
-		List <Cliente>listaCliente = new ArrayList<Cliente>();
-		
+	public static ArrayList<String> Listar(){
+		ArrayList<String> dados = new ArrayList<String>();
 		PreparedStatement pst=null;		
 		ResultSet rs;
 		String sql=("SELECT * FROM CLIENTE");
@@ -59,14 +55,7 @@ public class ClienteDAO {
 			pst = Conexao.executaStatement(sql);
 			rs=pst.executeQuery();
 			while (rs.next()){
-				Cliente cliente = new Cliente();
-				cliente.setCpf(rs.getString("CPF"));
-				cliente.setCodigo(rs.getString("CODIGO"));
-				cliente.setNome(rs.getString("NOME"));
-				listaCliente.add(cliente);
-			}
-			for(Cliente c : listaCliente){
-				System.out.println(c.getNome());
+				dados.add(rs.getString("CODIGO")+";"+rs.getString("NOME")+";"+rs.getString("CPF"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -75,8 +64,7 @@ public class ClienteDAO {
 			Conexao.fechaPreparedStatement();
 		}
 		
-		
-		return listaCliente;
+		return dados;
 	}
 	public static Cliente Busca(String codigo){
 		Cliente cliente = new Cliente ();

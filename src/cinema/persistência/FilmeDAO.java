@@ -1,6 +1,7 @@
 package cinema.persistência;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 import cinema.dominio.Filme;
 
@@ -107,5 +108,26 @@ public class FilmeDAO {
 			Conexao.fechaConexaoBanco();
 			Conexao.fechaPreparedStatement();
 		}
+	}
+	public static ArrayList<String> Listar(){
+		ArrayList<String> dados = new ArrayList<String>();
+		PreparedStatement pst=null;		
+		ResultSet rs;
+		String sql=("SELECT * FROM FILME");
+		
+		try {
+			pst = Conexao.executaStatement(sql);
+			rs=pst.executeQuery();
+			while (rs.next()){
+				dados.add(rs.getString("CODIGO")+";"+rs.getString("COD_DIRETOR")+";"+rs.getString("ANO_LANCAMENTO").substring(0,10)+";"+rs.getString("GENERO")+";"+rs.getString("TIPO")+";"+rs.getString("TITULO")+";"+rs.getString("TITULO_PORT"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			Conexao.fechaConexaoBanco();
+			Conexao.fechaPreparedStatement();
+		}
+		
+		return dados;
 	}
 }

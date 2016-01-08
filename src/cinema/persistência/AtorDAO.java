@@ -3,6 +3,7 @@ package cinema.persistência;
 import cinema.dominio.Ator;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 public class AtorDAO {
 	//OBS: FORMATO PARA A DATA (YYYY-MM-DD) EX: 2015-11-21
@@ -69,5 +70,26 @@ public class AtorDAO {
 			Conexao.fechaConexaoBanco();
 			Conexao.fechaPreparedStatement();
 		}
+	}
+	public static ArrayList<String> Listar(){
+		ArrayList<String> dados = new ArrayList<String>();
+		PreparedStatement pst=null;		
+		ResultSet rs;
+		String sql=("SELECT * FROM ATOR");
+		
+		try {
+			pst = Conexao.executaStatement(sql);
+			rs=pst.executeQuery();
+			while (rs.next()){
+				dados.add(rs.getString("CODIGO")+";"+rs.getString("NOME")+";"+rs.getString("NACIONALIDADE")+";"+rs.getString("DATA_NASC").substring(0,10));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			Conexao.fechaConexaoBanco();
+			Conexao.fechaPreparedStatement();
+		}
+		
+		return dados;
 	}
 }

@@ -1,5 +1,6 @@
 package cinema.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import cinema.dominio.Cliente;
@@ -13,9 +14,6 @@ public class ClienteController {
 		cliente.setCodigo(codigo);
 		ClienteDAO.Create(cliente);
 		
-	}
-	public static List listarCliente (){
-		return ClienteDAO.listaCliente();
 	}
 	public static void delete(String codigo){
 		ClienteDAO.Delete(codigo);
@@ -33,6 +31,9 @@ public class ClienteController {
 	}
 	public static void del_telefone(String codigo, String numero){
 		ClienteDAO.Del_Telefone(codigo, numero);
+	}
+	public static ArrayList<String> listar(){
+		return ClienteDAO.Listar();
 	}
 	
 }
