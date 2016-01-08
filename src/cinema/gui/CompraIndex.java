@@ -6,13 +6,13 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import cinema.controllers.ClienteController;
 import cinema.controllers.*;
 
 public class CompraIndex extends JPanel {
@@ -38,6 +38,7 @@ public class CompraIndex extends JPanel {
 		buscarTextField.setColumns(10);
 		
 		JButton btnBuscar = new JButton("Pesquisar");
+		btnBuscar.setIcon(new ImageIcon("img/search.png"));
 		btnBuscar.setBounds(346, 108, 114, 23);
 		CompraInicio.add(btnBuscar, "btnBuscar");
 		
@@ -46,6 +47,7 @@ public class CompraIndex extends JPanel {
 		CompraInicio.add(lblId);
 		
 		JButton btnCriar = new JButton("Cadastrar");
+		btnCriar.setIcon(new ImageIcon("img/register.png"));
 		btnCriar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JPanel compraCria = new CompraCria();
@@ -55,7 +57,7 @@ public class CompraIndex extends JPanel {
 				compraCard.show(CompraPanelCards, "Criar");
 			}
 		});
-		btnCriar.setBounds(472, 108, 96, 23);
+		btnCriar.setBounds(472, 108, 114, 23);
 		CompraInicio.add(btnCriar);
 		
 		JLabel lblCompra = new JLabel("Compra");

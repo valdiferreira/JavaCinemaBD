@@ -5,7 +5,10 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import cinema.controllers.*;
+
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -40,6 +43,7 @@ public class SalaIndex extends JPanel {
 		SalaInicio.add(lblNumero);
 		
 		JButton btnPesquisar = new JButton("Pesquisar");
+		btnPesquisar.setIcon(new ImageIcon("img/search.png"));
 		btnPesquisar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JPanel SalaUpdate = new SalaUpdate(SalaController.busca(numero_salaField.getText(), cod_cinemaField.getText()));
@@ -53,6 +57,7 @@ public class SalaIndex extends JPanel {
 		SalaInicio.add(btnPesquisar);
 		
 		JButton btnCriar = new JButton("Cadastrar");
+		btnCriar.setIcon(new ImageIcon("img/register.png"));
 		btnCriar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JPanel salaCria = new SalaCria();
@@ -62,7 +67,7 @@ public class SalaIndex extends JPanel {
 				salaCard.show(SalaPanelCards, "Cria");
 			}
 		});
-		btnCriar.setBounds(472, 108, 96, 23);
+		btnCriar.setBounds(472, 108, 114, 23);
 		SalaInicio.add(btnCriar);
 		
 		JLabel lblSala = new JLabel("Sala");

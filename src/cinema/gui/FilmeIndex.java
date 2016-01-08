@@ -7,6 +7,7 @@ import cinema.controllers.ClienteController;
 import cinema.controllers.FilmeController;
 import cinema.dominio.*;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
@@ -45,6 +46,7 @@ public class FilmeIndex extends JPanel {
 		FilmeInicio.add(lblID);
 		
 		btnPesquisar = new JButton("Pesquisar");
+		btnPesquisar.setIcon(new ImageIcon("img/search.png"));
 		btnPesquisar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JPanel filmeUpdate = new FilmeUpdate(FilmeController.busca(codigoField.getText()));
@@ -58,12 +60,17 @@ public class FilmeIndex extends JPanel {
 		FilmeInicio.add(btnPesquisar);
 		
 		JButton btnCriar = new JButton("Cadastrar");
+		btnCriar.setIcon(new ImageIcon("img/register.png"));
 		btnCriar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+				JPanel filmeCria = new FilmeCria();
+				filmeCria.setBounds(0, 75, 884, 389);
+				FilmePanelCards.add(filmeCria, "Buscar");
+				FilmeInicio.setVisible(false);
+				filmeCard.show(FilmePanelCards, "Cadastrar");
 			}
 		});
-		btnCriar.setBounds(472, 108, 96, 23);
+		btnCriar.setBounds(472, 108, 114, 23);
 		FilmeInicio.add(btnCriar);
 		
 		JLabel lblFilme = new JLabel("Filme");

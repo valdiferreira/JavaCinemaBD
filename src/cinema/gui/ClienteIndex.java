@@ -1,5 +1,6 @@
 package cinema.gui;
 
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JTextField;
@@ -9,7 +10,9 @@ import cinema.controllers.ClienteController;
 import java.awt.event.ActionListener;
 import java.awt.CardLayout;
 import java.awt.event.ActionEvent;
+
 import javax.swing.JLabel;
+
 import java.awt.Font;
 
 public class ClienteIndex extends JPanel {
@@ -38,6 +41,7 @@ public class ClienteIndex extends JPanel {
 		buscarTextField.setColumns(10);
 		
 		JButton btnBuscar = new JButton("Pesquisar");
+		btnBuscar.setIcon(new ImageIcon("img/search.png"));
 		btnBuscar.setBounds(346, 108, 114, 23);
 		ClienteInicio.add(btnBuscar, "btnBuscar");
 		
@@ -46,6 +50,7 @@ public class ClienteIndex extends JPanel {
 		ClienteInicio.add(lblId);
 		
 		JButton btnCriar = new JButton("Cadastrar");
+		btnCriar.setIcon(new ImageIcon("img/register.png"));
 		btnCriar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JPanel clienteCria = new ClienteCria();
@@ -55,7 +60,7 @@ public class ClienteIndex extends JPanel {
 				clienteCard.show(ClientePanelCards, "Criar");
 			}
 		});
-		btnCriar.setBounds(472, 108, 96, 23);
+		btnCriar.setBounds(472, 108, 114, 23);
 		ClienteInicio.add(btnCriar);
 		
 		JLabel lblCliente = new JLabel("Cliente");

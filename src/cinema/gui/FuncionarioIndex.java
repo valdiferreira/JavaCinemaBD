@@ -6,13 +6,13 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-import cinema.controllers.DiretorController;
 import cinema.controllers.*;
 
 public class FuncionarioIndex extends JPanel {
@@ -41,6 +41,7 @@ public class FuncionarioIndex extends JPanel {
 		FuncionarioInicio.add(lblCPF);
 		
 		JButton btnPesquisar = new JButton("Pesquisar");
+		btnPesquisar.setIcon(new ImageIcon("img/search.png"));
 		btnPesquisar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JPanel FuncionarioUpdate = new FuncionarioUpdate(FuncionarioController.busca(codigoField.getText()));
@@ -54,6 +55,7 @@ public class FuncionarioIndex extends JPanel {
 		FuncionarioInicio.add(btnPesquisar);
 		
 		JButton btnCriar = new JButton("Cadastrar");
+		btnCriar.setIcon(new ImageIcon("img/register.png"));
 		btnCriar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JPanel funcionarioCria = new FuncionarioCria();
@@ -63,7 +65,7 @@ public class FuncionarioIndex extends JPanel {
 				FuncionarioCard.show(FuncionarioPanelCards, "Cria");
 			}
 		});
-		btnCriar.setBounds(472, 108, 96, 23);
+		btnCriar.setBounds(472, 108, 114, 23);
 		FuncionarioInicio.add(btnCriar);
 		
 		JLabel lblFuncionario = new JLabel("Funcion\u00E1rio");

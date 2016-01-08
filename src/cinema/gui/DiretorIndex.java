@@ -9,6 +9,7 @@ import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -40,6 +41,7 @@ public class DiretorIndex extends JPanel {
 		DiretorInicio.add(lblID);
 		
 		JButton btnPesquisar = new JButton("Pesquisar");
+		btnPesquisar.setIcon(new ImageIcon("img/search.png"));
 		btnPesquisar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JPanel diretorUpdate = new DiretorUpdate(DiretorController.busca(codigoField.getText()));
@@ -53,6 +55,7 @@ public class DiretorIndex extends JPanel {
 		DiretorInicio.add(btnPesquisar);
 		
 		JButton btnCriar = new JButton("Cadastrar");
+		btnCriar.setIcon(new ImageIcon("img/register.png"));
 		btnCriar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				JPanel diretorCria = new DiretorCria();
@@ -62,7 +65,7 @@ public class DiretorIndex extends JPanel {
 				diretorCard.show(DiretorPanelCards, "Cria");
 			}
 		});
-		btnCriar.setBounds(472, 108, 96, 23);
+		btnCriar.setBounds(472, 108, 114, 23);
 		DiretorInicio.add(btnCriar);
 		
 		JLabel lblDiretor = new JLabel("Diretor");
