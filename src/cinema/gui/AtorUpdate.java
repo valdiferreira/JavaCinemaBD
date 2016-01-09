@@ -16,6 +16,8 @@ import java.awt.event.ActionEvent;
 import java.awt.FlowLayout;
 
 import javax.swing.JLabel;
+import javax.swing.ImageIcon;
+import java.awt.Font;
 
 public class AtorUpdate extends JPanel {
 	private String codidoAtor;
@@ -28,6 +30,7 @@ public class AtorUpdate extends JPanel {
 	private JButton btnDelete;
 	private JTextField dataField;
 	private JTextField nacionalidadeField;
+	private JLabel lblInformaesDoFuncionrio;
 
 	/**
 	 * Create the panel.
@@ -65,6 +68,7 @@ public class AtorUpdate extends JPanel {
 
 		
 		JButton btnUpdate = new JButton("Atualizar");
+		btnUpdate.setIcon(new ImageIcon("img/atualizar.png"));
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				int n = JOptionPane.showConfirmDialog(
@@ -105,6 +109,7 @@ public class AtorUpdate extends JPanel {
 		add(lblNacionalidade);
 		
 		btnDelete = new JButton("Deletar");
+		btnDelete.setIcon(new ImageIcon("img/delete.png"));
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int n = JOptionPane.showConfirmDialog(
@@ -125,6 +130,11 @@ public class AtorUpdate extends JPanel {
 		JLabel lblExAaaa = new JLabel("Ex: AAAA-MM-DD (2015-12-23)");
 		lblExAaaa.setBounds(514, 164, 209, 14);
 		add(lblExAaaa);
+		
+		lblInformaesDoFuncionrio = new JLabel("Informa\u00E7\u00F5es do Funcion\u00E1rio");
+		lblInformaesDoFuncionrio.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblInformaesDoFuncionrio.setBounds(306, 75, 237, 14);
+		add(lblInformaesDoFuncionrio);
 		
 	}
 }

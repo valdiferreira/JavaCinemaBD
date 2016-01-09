@@ -17,6 +17,7 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class FilmeCria extends JPanel {
 
@@ -113,6 +114,7 @@ public class FilmeCria extends JPanel {
 		add(sinopseArea);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setIcon(new ImageIcon("img/register.png"));
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				FilmeController.create(codigoField.getText(), tituloField.getText(), titulo_portField.getText(), sinopseArea.getText(), anoField.getText(), cod_diretorField.getText(), tipoField.getText(), generoField.getText());

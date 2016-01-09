@@ -1,5 +1,7 @@
 package cinema.controllers;
 
+import java.util.ArrayList;
+
 import cinema.dominio.Funcionario;
 import cinema.persistência.FuncionarioDAO;
 
@@ -25,5 +27,8 @@ public class FuncionarioController {
 	}
 	public static void update(Funcionario funcionario){
 		FuncionarioDAO.Update(funcionario);
+	}
+	public static ArrayList<String> listar(){
+		return FuncionarioDAO.Listar();
 	}
 }

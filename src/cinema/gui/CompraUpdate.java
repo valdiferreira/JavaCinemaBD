@@ -18,6 +18,7 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class CompraUpdate extends JPanel {
 
@@ -115,6 +116,7 @@ public class CompraUpdate extends JPanel {
 		valor_totalField.setText(compra.getValor_total());
 		
 		JButton btnAtualizar = new JButton("Atualizar");
+		btnAtualizar.setIcon(new ImageIcon("img/atualizar.png"));
 		btnAtualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				compra.setCod_cliente(cod_clienteField.getText());
@@ -127,17 +129,18 @@ public class CompraUpdate extends JPanel {
 				JOptionPane.showMessageDialog(null, "Compra atualizada com sucesso.", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		btnAtualizar.setBounds(324, 242, 89, 23);
+		btnAtualizar.setBounds(299, 242, 114, 23);
 		add(btnAtualizar);
 		
 		JButton btnDeletar = new JButton("Deletar");
+		btnDeletar.setIcon(new ImageIcon("img/delete.png"));
 		btnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CompraController.delete(codigoField.getText());
 				JOptionPane.showMessageDialog(null, "Compra deletada com sucesso.", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		btnDeletar.setBounds(422, 242, 89, 23);
+		btnDeletar.setBounds(422, 242, 95, 23);
 		add(btnDeletar);
 		
 		

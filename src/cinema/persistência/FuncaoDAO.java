@@ -1,6 +1,7 @@
 package cinema.persistência;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 import cinema.dominio.Funcao;
 
@@ -67,6 +68,27 @@ public class FuncaoDAO {
 			Conexao.fechaPreparedStatement();
 		}
 		return funcao;
+	}
+	public static ArrayList<String> Listar(){
+		ArrayList<String> dados = new ArrayList<String>();
+		PreparedStatement pst=null;		
+		ResultSet rs;
+		String sql=("SELECT * FROM FUNCAO");
+		
+		try {
+			pst = Conexao.executaStatement(sql);
+			rs=pst.executeQuery();
+			while (rs.next()){
+				dados.add(rs.getString("CODIGO")+";"+rs.getString("DESCRiCAO"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			Conexao.fechaConexaoBanco();
+			Conexao.fechaPreparedStatement();
+		}
+		
+		return dados;
 	}
 
 }

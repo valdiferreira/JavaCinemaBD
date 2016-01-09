@@ -1,5 +1,7 @@
 package cinema.controllers;
 
+import java.util.ArrayList;
+
 import cinema.dominio.*;
 import cinema.persistência.*;
 
@@ -29,5 +31,8 @@ public class SessaoController {
 	}
 	public static void del_func(String cpf, String c_sessao, String c_funcao){
 		SessaoDAO.Del_Func(cpf, c_sessao, c_funcao);
+	}
+	public static ArrayList<String> listar(){
+		return SessaoDAO.Listar();
 	}
 }

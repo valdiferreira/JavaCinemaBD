@@ -107,6 +107,7 @@ public class AtorIndex extends JPanel {
 		scrollPane.setBounds(126, 157, 597, 115);
 		atorInicio.add(scrollPane);
 		JTable table = new JTable();
+		table.setEnabled(false);
 		table.setModel(date);
 		scrollPane.setViewportView(table);
 

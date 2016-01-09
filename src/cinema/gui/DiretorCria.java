@@ -16,6 +16,7 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class DiretorCria extends JPanel {
 
@@ -61,6 +62,7 @@ public class DiretorCria extends JPanel {
 		add(label_2);
 		
 		JButton btnCriar = new JButton("Cadastrar");
+		btnCriar.setIcon(new ImageIcon("img/register.png"));
 		btnCriar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DiretorController.create(codigoField.getText(), nomeField.getText(), nacionalidadeField.getText());

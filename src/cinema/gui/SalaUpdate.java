@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class SalaUpdate extends JPanel {
 
@@ -53,6 +54,7 @@ public class SalaUpdate extends JPanel {
 		qtd_lugaresField.setColumns(10);
 		
 		JButton btnAtualizar = new JButton("Atualizar");
+		btnAtualizar.setIcon(new ImageIcon("C:\\Users\\Neto\\Documents\\GitHub\\JavaCinemaBD\\img\\atualizar.png"));
 		btnAtualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				sala.setCod_cinema(cod_cinemaField.getText());
@@ -62,17 +64,18 @@ public class SalaUpdate extends JPanel {
 				JOptionPane.showMessageDialog(null, "Sala atualizada com sucesso.", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		btnAtualizar.setBounds(310, 183, 89, 23);
+		btnAtualizar.setBounds(294, 183, 105, 23);
 		add(btnAtualizar);
 		
 		JButton btnDeletar = new JButton("Deletar");
+		btnDeletar.setIcon(new ImageIcon("C:\\Users\\Neto\\Documents\\GitHub\\JavaCinemaBD\\img\\delete.png"));
 		btnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SalaController.delete(numero_salaField.getText(), cod_cinemaField.getText());
 				JOptionPane.showMessageDialog(null, "Sala deletada com sucesso.", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		btnDeletar.setBounds(409, 183, 89, 23);
+		btnDeletar.setBounds(409, 183, 113, 23);
 		add(btnDeletar);
 		
 		JLabel lblInformaesDaSala = new JLabel("Informa\u00E7\u00F5es da Sala");

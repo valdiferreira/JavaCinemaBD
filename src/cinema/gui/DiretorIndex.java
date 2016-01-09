@@ -92,6 +92,7 @@ public class DiretorIndex extends JPanel {
 		DiretorInicio.add(scrollPane);
 		DefaultTableModel date = new DefaultTableModel(colunas, 0);
 		JTable table = new JTable();
+		table.setEnabled(false);
 		table.setModel(date);
 		scrollPane.setViewportView(table);
 		

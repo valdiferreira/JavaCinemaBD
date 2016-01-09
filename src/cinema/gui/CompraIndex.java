@@ -5,13 +5,17 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 import cinema.controllers.*;
 
@@ -81,6 +85,26 @@ public class CompraIndex extends JPanel {
 		CompraPanelCards.setLayout(compraCard);
 		compraCard.show(CompraPanelCards, "CompraInicio");
 		
+		//Colunas da tabela
+		String[] colunas = new String[]{"Codigo","Cliente","Sessao","Data"};
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(150, 157, 516, 84);
+		CompraInicio.add(scrollPane);
+		DefaultTableModel date = new DefaultTableModel(colunas, 0);
+		JTable table = new JTable();
+		table.setEnabled(false);
+		table.setModel(date);
+		scrollPane.setViewportView(table);
+		
+		//Linhas da tabela
+		ArrayList<String> dados = new ArrayList<String>();
+		dados = CompraController.listar();
+		String[] linha;
+		for(int i = 0; i < dados.size(); i++){
+			linha = dados.get(i).split(";");
+			date.addRow(linha);
+		}
 	}
 
 }

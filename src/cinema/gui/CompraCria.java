@@ -14,6 +14,7 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class CompraCria extends JPanel{
 
@@ -95,13 +96,14 @@ public class CompraCria extends JPanel{
 		add(lblValorTotal);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setIcon(new ImageIcon("img/register.png"));
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				CompraController.create(codigoField.getText(), data_horaField.getText(), forma_pagamentoField.getText(), qtd_ingressoField.getText(), valor_totalField.getText(), cod_clienteField.getText(), cod_sessaoField.getText());
 				JOptionPane.showMessageDialog(null, "Compra cadastrada com sucesso.", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		btnCadastrar.setBounds(395, 245, 103, 20);
+		btnCadastrar.setBounds(395, 245, 114, 20);
 		add(btnCadastrar);
 
 	}

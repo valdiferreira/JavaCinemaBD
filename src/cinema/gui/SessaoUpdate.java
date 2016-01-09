@@ -108,6 +108,7 @@ public class SessaoUpdate extends JPanel {
 		qtd_publicoField.setText(sessao.getQtd_publico());
 		
 		JButton btnAtualizar = new JButton("Atualizar");
+		btnAtualizar.setIcon(new ImageIcon("img/atualizar.png"));
 		btnAtualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				sessao.setCod_cinema(cod_cinemaField.getText());
@@ -123,17 +124,18 @@ public class SessaoUpdate extends JPanel {
 		});
 		btnAtualizar.addContainerListener(new ContainerAdapter() {
 		});
-		btnAtualizar.setBounds(123, 231, 102, 23);
+		btnAtualizar.setBounds(102, 231, 123, 23);
 		add(btnAtualizar);
 		
 		JButton btnDeletar = new JButton("Deletar");
+		btnDeletar.setIcon(new ImageIcon("img/delete.png"));
 		btnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SessaoController.delete(codigoField.getText());
 				JOptionPane.showMessageDialog(null, "Sessão deletada com sucesso.", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		btnDeletar.setBounds(235, 231, 89, 23);
+		btnDeletar.setBounds(235, 231, 108, 23);
 		add(btnDeletar);
 		
 		JLabel lblExAaaammdd = new JLabel("Ex: AAAA-MM-DD 2015-12-23");
@@ -175,21 +177,23 @@ public class SessaoUpdate extends JPanel {
 		sessaoField.setText(sessao.getCodigo());
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setIcon(new ImageIcon("C:\\Users\\Neto\\Documents\\GitHub\\JavaCinemaBD\\img\\register.png"));
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SessaoController.add_func(cpfField.getText(), sessaoField.getText(), funcaoField.getText());
 			}
 		});
-		btnCadastrar.setBounds(565, 157, 92, 23);
+		btnCadastrar.setBounds(525, 157, 132, 23);
 		add(btnCadastrar);
 		
 		JButton btnDeletar_1 = new JButton("Deletar");
+		btnDeletar_1.setIcon(new ImageIcon("C:\\Users\\Neto\\Documents\\GitHub\\JavaCinemaBD\\img\\delete.png"));
 		btnDeletar_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SessaoController.del_func(cpfField.getText(), sessaoField.getText(), funcaoField.getText());
 			}
 		});
-		btnDeletar_1.setBounds(667, 157, 89, 23);
+		btnDeletar_1.setBounds(667, 157, 102, 23);
 		add(btnDeletar_1);
 		
 	}

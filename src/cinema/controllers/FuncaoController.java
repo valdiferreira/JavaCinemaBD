@@ -1,5 +1,7 @@
 package cinema.controllers;
 
+import java.util.ArrayList;
+
 import cinema.dominio.*;
 import cinema.persistência.*;
 
@@ -22,5 +24,9 @@ public class FuncaoController {
 	
 	public static Funcao busca(String codigo){
 		return FuncaoDAO.Buscar(codigo);
+	}
+	
+	public static ArrayList<String> listar(){
+		return FuncaoDAO.Listar();
 	}
 }

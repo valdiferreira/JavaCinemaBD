@@ -20,6 +20,7 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class FuncaoUpdate extends JPanel {
 
@@ -40,11 +41,9 @@ public class FuncaoUpdate extends JPanel {
 		add(codigoField);
 		codigoField.setColumns(10);
 		
-		JTextArea descricaoArea = new JTextArea();
-		descricaoArea.setWrapStyleWord(true);
-		descricaoArea.setLineWrap(true);
-		descricaoArea.setBounds(387, 106, 175, 23);
-		add(descricaoArea);
+		JTextField descricaoField = new JTextField();
+		descricaoField.setBounds(387, 106, 175, 23);
+		add(descricaoField);
 		
 		JLabel lblCodigo = new JLabel("Codigo");
 		lblCodigo.setBounds(333, 78, 46, 14);
@@ -55,27 +54,29 @@ public class FuncaoUpdate extends JPanel {
 		add(lblDescrio);
 		
 		codigoField.setText(funcao.getCodigo());
-		descricaoArea.setText(funcao.getDescrição());
+		descricaoField.setText(funcao.getDescrição());
 		
 		JButton btnAtualizar = new JButton("Atualizar");
+		btnAtualizar.setIcon(new ImageIcon("img/atualizar.png"));
 		btnAtualizar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				funcao.setDescrição(descricaoArea.getText());
+				funcao.setDescrição(descricaoField.getText());
 				FuncaoController.update(funcao);
 				JOptionPane.showMessageDialog(null, "Função atualizada com sucesso.", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		btnAtualizar.setBounds(333, 140, 89, 23);
+		btnAtualizar.setBounds(303, 140, 119, 23);
 		add(btnAtualizar);
 		
 		JButton btnDeletar = new JButton("Deletar");
+		btnDeletar.setIcon(new ImageIcon("img/delete.png"));
 		btnDeletar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				FuncaoController.delete(codigoField.getText());
 				JOptionPane.showMessageDialog(null, "Função deletada com sucesso.", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		btnDeletar.setBounds(432, 140, 89, 23);
+		btnDeletar.setBounds(432, 140, 99, 23);
 		add(btnDeletar);
 		
 		

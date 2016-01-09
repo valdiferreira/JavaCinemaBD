@@ -1,9 +1,6 @@
 package cinema.gui;
 
 import java.awt.CardLayout;
-
-import cinema.controllers.*;
-
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -20,78 +17,78 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import cinema.controllers.FilmeController;
+import cinema.controllers.*;
 
-public class FuncaoIndex extends JPanel {
+public class CinemaIndex extends JPanel {
 
 	private JFrame frame;
 
-	public FuncaoIndex() {
+	public CinemaIndex() {
 		setLayout(null);
-		CardLayout funcaoCard = new CardLayout(0,0);
-		JPanel FuncaoPanelCards = new JPanel();
+		CardLayout cinemaCard = new CardLayout(0,0);
+		JPanel CinemaPanelCards = new JPanel();
 		this.setBounds(0,75,884,389);
 		
-		JPanel FuncaoInicio = new JPanel();
-		FuncaoInicio.setBounds(0, 75, 884, 553);
-		add(FuncaoInicio);
-		FuncaoInicio.setLayout(null);
+		JPanel CinemaInicio = new JPanel();
+		CinemaInicio.setBounds(0, 75, 884, 553);
+		add(CinemaInicio);
+		CinemaInicio.setLayout(null);
 		
 		JTextField codigoField = new JTextField();
 		codigoField.setBounds(295, 109, 41, 20);
-		FuncaoInicio.add(codigoField);
+		CinemaInicio.add(codigoField);
 		codigoField.setColumns(10);
 		
 		JLabel lblID = new JLabel("ID");
 		lblID.setBounds(279, 112, 16, 14);
-		FuncaoInicio.add(lblID);
+		CinemaInicio.add(lblID);
 		
 		JButton btnPesquisar = new JButton("Pesquisar");
 		btnPesquisar.setIcon(new ImageIcon("img/search.png"));
 		btnPesquisar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JPanel funcaoUpdate = new FuncaoUpdate(FuncaoController.busca(codigoField.getText()));
-				funcaoUpdate.setBounds(0, 75, 884, 389);
-				FuncaoPanelCards.add(funcaoUpdate, "Buscar");
-				FuncaoInicio.setVisible(false);
-				funcaoCard.show(FuncaoPanelCards, "Dados");
+				JPanel cinemaUpdate = new CinemaUpdate(CinemaController.busca(codigoField.getText()));
+				cinemaUpdate.setBounds(0, 75, 884, 389);
+				CinemaPanelCards.add(cinemaUpdate, "Buscar");
+				CinemaInicio.setVisible(false);
+				cinemaCard.show(CinemaPanelCards, "Dados");
 			}
 		});
 		btnPesquisar.setBounds(346, 108, 114, 23);
-		FuncaoInicio.add(btnPesquisar);
+		CinemaInicio.add(btnPesquisar);
 		btnPesquisar.setBorder(new RoundedBorder(5));
 		
 		JButton btnCriar = new JButton("Cadastrar");
 		btnCriar.setIcon(new ImageIcon("img/register.png"));
 		btnCriar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JPanel funcaoCria = new FuncaoCria();
-				funcaoCria.setBounds(0, 75, 884, 389);
-				FuncaoPanelCards.add(funcaoCria, "Buscar");
-				FuncaoInicio.setVisible(false);
-				funcaoCard.show(FuncaoPanelCards, "Cria");
+				JPanel cinemaCria = new CinemaCria();
+				cinemaCria.setBounds(0, 75, 884, 389);
+				CinemaPanelCards.add(cinemaCria, "Buscar");
+				CinemaInicio.setVisible(false);
+				cinemaCard.show(CinemaPanelCards, "Cria");
 			}
 		});
 		btnCriar.setBounds(472, 108, 114, 23);
-		FuncaoInicio.add(btnCriar);
+		CinemaInicio.add(btnCriar);
 		btnCriar.setBorder(new RoundedBorder(5));
 		
-		JLabel lblFuncao = new JLabel("Fun\u00E7\u00E3o");
-		lblFuncao.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblFuncao.setBounds(377, 57, 63, 20);
-		FuncaoInicio.add(lblFuncao);
+		JLabel lblCinema = new JLabel("Cinema");
+		lblCinema.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblCinema.setBounds(377, 57, 63, 20);
+		CinemaInicio.add(lblCinema);
 		
-		FuncaoPanelCards.setBounds(0, 75, 884, 389);
-		add(FuncaoPanelCards);
-		FuncaoPanelCards.setLayout(funcaoCard);
-		funcaoCard.show(FuncaoPanelCards, "FilmeInicio");
+		CinemaPanelCards.setBounds(0, 75, 884, 389);
+		add(CinemaPanelCards);
+		CinemaPanelCards.setLayout(cinemaCard);
+		cinemaCard.show(CinemaPanelCards, "FilmeInicio");
 		
 		//Colunas da tabela
-		String[] colunas = new String[]{"Codigo","Descrição"};
+		String[] colunas = new String[]{"Codigo","Cidade","Rua","Bairro","Numero","Nome"};
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(268, 157, 327, 84);
-		FuncaoInicio.add(scrollPane);
+		scrollPane.setBounds(10, 157, 864, 69);
+		CinemaInicio.add(scrollPane);
 		DefaultTableModel date = new DefaultTableModel(colunas, 0);
 		JTable table = new JTable();
 		table.setEnabled(false);
@@ -100,12 +97,11 @@ public class FuncaoIndex extends JPanel {
 		
 		//Linhas da tabela
 		ArrayList<String> dados = new ArrayList<String>();
-		dados = FuncaoController.listar();
+		dados = CinemaController.listar();
 		String[] linha;
 		for(int i = 0; i < dados.size(); i++){
 			linha = dados.get(i).split(";");
 			date.addRow(linha);
 		}
 	}
-
 }

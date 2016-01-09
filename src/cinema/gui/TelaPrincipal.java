@@ -52,7 +52,6 @@ public class TelaPrincipal extends JFrame {
 	 * Create the frame.
 	 */
 	public TelaPrincipal() {
-		setResizable(false);
 		
 		CardLayout cards_Index = new CardLayout();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -190,8 +189,20 @@ public class TelaPrincipal extends JFrame {
 		btnSessao.setBounds(792, 5, 89, 23);
 		contentPane.add(btnSessao);
 		btnSessao.setBorder(new RoundedBorder(5));
+		
+		JButton btnCinema = new JButton("Cinema");
+		btnCinema.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				JPanel cinemaIndex = new CinemaIndex();
+				Index.add(cinemaIndex, "CinemaIndex");
+				cards_Index.show(Index,"CinemaIndex");
+			}
+		});
+		btnCinema.setIcon(new ImageIcon("img/cinema-2.png"));
+		btnCinema.setBounds(2, 32, 89, 23);
+		contentPane.add(btnCinema);
+		btnCinema.setBorder(new RoundedBorder(5));
 	}
-	
 }
 
 //Classe para adicionar bordas aos botões

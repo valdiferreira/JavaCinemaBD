@@ -1,6 +1,7 @@
 package cinema.persistência;
 
 import java.sql.*;
+import java.util.ArrayList;
 
 import cinema.controllers.FuncionarioController;
 import cinema.dominio.Funcionario;
@@ -78,5 +79,26 @@ public class FuncionarioDAO {
 			Conexao.fechaConexaoBanco();
 			Conexao.fechaPreparedStatement();
 		}
+	}
+	public static ArrayList<String> Listar(){
+		ArrayList<String> dados = new ArrayList<String>();
+		PreparedStatement pst=null;		
+		ResultSet rs;
+		String sql=("SELECT * FROM FUNCIONARIO");
+		
+		try {
+			pst = Conexao.executaStatement(sql);
+			rs=pst.executeQuery();
+			while (rs.next()){
+				dados.add(rs.getString("CPF")+";"+rs.getString("NOME_FUNCIONARIO")+";"+rs.getString("COD_CINEMA"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			Conexao.fechaConexaoBanco();
+			Conexao.fechaPreparedStatement();
+		}
+		
+		return dados;
 	}
 }

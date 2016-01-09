@@ -13,6 +13,8 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
+import javax.swing.ImageIcon;
+import java.awt.Font;
 
 public class DiretorUpdate extends JPanel {
 
@@ -22,6 +24,7 @@ public class DiretorUpdate extends JPanel {
 		setLayout(null);
 
 		JButton btnUpdate = new JButton("Atualizar");
+		btnUpdate.setIcon(new ImageIcon("img/atualizar.png"));
 		btnUpdate.setBounds(363, 166, 87, 23);
 		add(btnUpdate);
 		btnUpdate.setBorder(new RoundedBorder(5));
@@ -48,7 +51,8 @@ public class DiretorUpdate extends JPanel {
 		nacionalidadeField.setText(diretor.getNacionalidade());
 		
 		JLabel lblInformaesDoUsurio = new JLabel("Informa\u00E7\u00F5es do Diretor");
-		lblInformaesDoUsurio.setBounds(390, 57, 145, 14);
+		lblInformaesDoUsurio.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblInformaesDoUsurio.setBounds(340, 57, 195, 14);
 		add(lblInformaesDoUsurio);
 		
 		JLabel lblId = new JLabel("Codigo:");
@@ -64,6 +68,7 @@ public class DiretorUpdate extends JPanel {
 		add(lblCpf);
 		
 		JButton btnDelete = new JButton("Deletar");
+		btnDelete.setIcon(new ImageIcon("img/delete.png"));
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				int n = JOptionPane.showConfirmDialog(

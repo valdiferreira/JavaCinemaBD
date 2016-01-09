@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class SalaCria extends JPanel {
 
@@ -50,6 +51,7 @@ public class SalaCria extends JPanel {
 		qtd_lugaresField.setColumns(10);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setIcon(new ImageIcon("img/register.png"));
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SalaController.create(numero_salaField.getText(), cod_cinemaField.getText(), qtd_lugaresField.getText());

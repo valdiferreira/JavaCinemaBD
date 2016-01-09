@@ -14,6 +14,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+import javax.swing.ImageIcon;
 
 public class AtorCria extends JPanel {
 
@@ -67,6 +68,7 @@ public class AtorCria extends JPanel {
 		nacionalidadeField.setColumns(10);
 		
 		JButton btnCriar = new JButton("Cadastrar");
+		btnCriar.setIcon(new ImageIcon("img/register.png"));
 		btnCriar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				AtorController.create(codigoField.getText(), nomeField.getText(), nacionalidadeField.getText(), dataField.getText());

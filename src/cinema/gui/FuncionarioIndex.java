@@ -5,13 +5,17 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 import cinema.controllers.*;
 
@@ -53,6 +57,7 @@ public class FuncionarioIndex extends JPanel {
 		});
 		btnPesquisar.setBounds(346, 108, 114, 23);
 		FuncionarioInicio.add(btnPesquisar);
+		btnPesquisar.setBorder(new RoundedBorder(5));
 		
 		JButton btnCriar = new JButton("Cadastrar");
 		btnCriar.setIcon(new ImageIcon("img/register.png"));
@@ -67,6 +72,7 @@ public class FuncionarioIndex extends JPanel {
 		});
 		btnCriar.setBounds(472, 108, 114, 23);
 		FuncionarioInicio.add(btnCriar);
+		btnCriar.setBorder(new RoundedBorder(5));
 		
 		JLabel lblFuncionario = new JLabel("Funcion\u00E1rio");
 		lblFuncionario.setFont(new Font("Tahoma", Font.BOLD, 15));
@@ -77,5 +83,26 @@ public class FuncionarioIndex extends JPanel {
 		add(FuncionarioPanelCards);
 		FuncionarioPanelCards.setLayout(FuncionarioCard);
 		FuncionarioCard.show(FuncionarioPanelCards, "FilmeInicio");
+		
+		//Colunas da tabela
+		String[] colunas = new String[]{"CPF","Nome","Codigo do Cinema"};
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(150, 157, 516, 84);
+		FuncionarioInicio.add(scrollPane);
+		DefaultTableModel date = new DefaultTableModel(colunas, 0);
+		JTable table = new JTable();
+		table.setEnabled(false);
+		table.setModel(date);
+		scrollPane.setViewportView(table);
+		
+		//Linhas da tabela
+		ArrayList<String> dados = new ArrayList<String>();
+		dados = FuncionarioController.listar();
+		String[] linha;
+		for(int i = 0; i < dados.size(); i++){
+			linha = dados.get(i).split(";");
+			date.addRow(linha);
+		}
 	}
 }

@@ -5,16 +5,21 @@ import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 
 import cinema.controllers.*;
 
 import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.ScrollPaneConstants;
 
 public class SessaoIndex extends JPanel {
 
@@ -29,7 +34,7 @@ public class SessaoIndex extends JPanel {
 		this.setBounds(0,75,884,389);
 		
 		JPanel SessaoInicio = new JPanel();
-		SessaoInicio.setBounds(0, 75, 884, 553);
+		SessaoInicio.setBounds(0, 0, 884, 389);
 		add(SessaoInicio);
 		SessaoInicio.setLayout(null);
 		
@@ -75,10 +80,33 @@ public class SessaoIndex extends JPanel {
 		lblSessao.setBounds(377, 57, 63, 20);
 		SessaoInicio.add(lblSessao);
 		
+		
 		SessaoPanelCards.setBounds(0, 75, 884, 389);
 		add(SessaoPanelCards);
 		SessaoPanelCards.setLayout(sessaoCard);
 		sessaoCard.show(SessaoPanelCards, "FilmeInicio");
+		
+		
+		//Colunas da tabela
+		String[] colunas = new String[]{"Codigo","Codigo do Cinema","Codigo do Filme","Numero da Sala","Publico"};
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(140, 157, 637, 84);
+		DefaultTableModel date = new DefaultTableModel(colunas, 0);
+		SessaoInicio.add(scrollPane);
+		JTable table = new JTable();
+		table.setEnabled(false);
+		table.setModel(date);
+		scrollPane.setViewportView(table);
+		
+		//Linhas da tabela
+		ArrayList<String> dados = new ArrayList<String>();
+		dados = SessaoController.listar();
+		String[] linha;
+		for(int i = 0; i < dados.size(); i++){
+			linha = dados.get(i).split(";");
+			date.addRow(linha);
+		}
 	}
 
 }

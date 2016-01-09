@@ -14,6 +14,7 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import cinema.controllers.FuncaoController;
+import javax.swing.ImageIcon;
 
 public class FuncaoCria extends JPanel{
 
@@ -33,11 +34,9 @@ public class FuncaoCria extends JPanel{
 		add(codigoField);
 		codigoField.setColumns(10);
 		
-		JTextArea descricaoArea = new JTextArea();
-		descricaoArea.setWrapStyleWord(true);
-		descricaoArea.setLineWrap(true);
-		descricaoArea.setBounds(387, 106, 175, 23);
-		add(descricaoArea);
+		JTextField descricaoField = new JTextField();
+		descricaoField.setBounds(387, 106, 175, 23);
+		add(descricaoField);
 		
 		JLabel lblCodigo = new JLabel("Codigo");
 		lblCodigo.setBounds(333, 78, 46, 14);
@@ -48,13 +47,14 @@ public class FuncaoCria extends JPanel{
 		add(lblDescrio);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setIcon(new ImageIcon("img/register.png"));
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				FuncaoController.create(codigoField.getText(), descricaoArea.getText());
+				FuncaoController.create(codigoField.getText(), descricaoField.getText());
 				JOptionPane.showMessageDialog(null, "Função criada com sucesso.", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		btnCadastrar.setBounds(397, 140, 100, 23);
+		btnCadastrar.setBounds(387, 140, 110, 23);
 		add(btnCadastrar);
 		
 		

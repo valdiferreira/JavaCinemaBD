@@ -18,6 +18,7 @@ import javax.swing.SwingConstants;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class SessaoCria extends JPanel{
 
@@ -91,6 +92,7 @@ public class SessaoCria extends JPanel{
 		add(lblPublico);
 		
 		JButton btnCadastrar = new JButton("Cadastrar");
+		btnCadastrar.setIcon(new ImageIcon("img/register.png"));
 		btnCadastrar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				SessaoController.create(cod_cinemaField.getText(), cod_filmeField.getText(), codigoField.getText(), data_horaField.getText(), numero_salaField.getText(), qtd_publicoField.getText());
@@ -101,7 +103,7 @@ public class SessaoCria extends JPanel{
 		});
 		btnCadastrar.addContainerListener(new ContainerAdapter() {
 		});
-		btnCadastrar.setBounds(325, 230, 102, 23);
+		btnCadastrar.setBounds(312, 230, 115, 23);
 		add(btnCadastrar);
 		
 		JLabel lblExAaaammdd = new JLabel("Ex: AAAA-MM-DD 2015-12-23");

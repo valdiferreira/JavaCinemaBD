@@ -3,6 +3,7 @@ package cinema.persistência;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 import cinema.dominio.Sessao;
 
@@ -99,6 +100,26 @@ public class SessaoDAO {
 			Conexao.fechaConexaoBanco();
 			Conexao.fechaPreparedStatement();
 		}
+	}
+	public static ArrayList<String> Listar(){
+		ArrayList<String> dados = new ArrayList<String>();
+		PreparedStatement pst=null;		
+		ResultSet rs;
+		String sql=("SELECT * FROM SESSAO");
+		try {
+			pst = Conexao.executaStatement(sql);
+			rs=pst.executeQuery();
+			while (rs.next()){
+				dados.add(rs.getString("CODIGO")+";"+rs.getString("COD_CINEMA")+";"+rs.getString("COD_FILME")+";"+rs.getString("NUMERO_SALA")+";"+rs.getString("QTD_PUBLICO"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			Conexao.fechaConexaoBanco();
+			Conexao.fechaPreparedStatement();
+		}
+		
+		return dados;
 	}
 
 }

@@ -1,5 +1,7 @@
 package cinema.controllers;
 
+import java.util.ArrayList;
+
 import cinema.dominio.Sala;
 import cinema.persistência.SalaDAO;
 
@@ -23,5 +25,9 @@ public class SalaController {
 	
 	public static void update(Sala sala){
 		SalaDAO.Update(sala);
+	}
+	
+	public static ArrayList<String> listar(){
+		return SalaDAO.Listar();
 	}
 }

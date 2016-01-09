@@ -1,6 +1,8 @@
 package cinema.controllers;
 
 
+import java.util.ArrayList;
+
 import cinema.dominio.Compra;
 import cinema.persistência.CompraDAO;
 
@@ -26,5 +28,8 @@ public class CompraController {
 	}
 	public static void update(Compra compra){
 		CompraDAO.Update(compra);
+	}
+	public static ArrayList<String> listar(){
+		return CompraDAO.Listar();
 	}
 }
