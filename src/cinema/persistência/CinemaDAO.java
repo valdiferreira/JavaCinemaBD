@@ -118,4 +118,72 @@ public class CinemaDAO {
 			Conexao.fechaPreparedStatement();
 		}
 	}
+	public static String Ingressos(String codigo){
+		String total = "";
+		PreparedStatement pst = null;		
+		ResultSet rs;
+		String sql=("SELECT CINEMA.NOME_FANTASIA AS NOME_CINEMA, SUM(COMPRA.QTD_INGRESSO) AS QTD_INGRESSOS"
+				+" FROM CINEMA, COMPRA, SESSAO"
+				+" WHERE "+codigo+" = SESSAO.COD_CINEMA"
+				+" AND SESSAO.CODIGO = COMPRA.COD_SESSAO"
+				+" GROUP BY CINEMA.NOME_FANTASIA");
+		try {
+			pst = Conexao.executaStatement(sql);
+			rs=pst.executeQuery();
+			while (rs.next()){
+				total = rs.getString("QTD_INGRESSOS");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			Conexao.fechaConexaoBanco();
+			Conexao.fechaPreparedStatement();
+		}
+		
+		
+		return total;
+	}
+	public static String Lucro(String codigo){
+		String total = "";
+		PreparedStatement pst = null;		
+		ResultSet rs;
+		String sql=("SELECT LUCRO_CINEMA("+codigo+") as LUCRO FROM DUAL");
+		try {
+			pst = Conexao.executaStatement(sql);
+			rs=pst.executeQuery();
+			while (rs.next()){
+				total = rs.getString("LUCRO");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			Conexao.fechaConexaoBanco();
+			Conexao.fechaPreparedStatement();
+		}
+		
+		
+		return total;
+	}
+	public static ArrayList<String> Lista_Filmes(String codigo){
+		ArrayList<String> dados = new ArrayList<String>();
+		PreparedStatement pst=null;		
+		ResultSet rs;
+		String sql=("SELECT FILME.TITULO_PORT AS NOME, FILME.GENERO FROM SESSAO, FILME WHERE SESSAO.COD_CINEMA = "+codigo+" AND SESSAO.COD_FILME = FILME.CODIGO");
+		try {
+			pst = Conexao.executaStatement(sql);
+			rs=pst.executeQuery();
+			while (rs.next()){
+				dados.add(rs.getString("NOME")+";"+rs.getString("GENERO"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			Conexao.fechaConexaoBanco();
+			Conexao.fechaPreparedStatement();
+		}
+		
+		return dados;
+	}
 }

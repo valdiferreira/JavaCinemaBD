@@ -35,4 +35,7 @@ public class SessaoController {
 	public static ArrayList<String> listar(){
 		return SessaoDAO.Listar();
 	}
+	public static String assentos(String codigo){
+		return SessaoDAO.Assentos(codigo);
+	}
 }

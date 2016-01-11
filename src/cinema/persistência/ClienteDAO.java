@@ -14,8 +14,8 @@ public class ClienteDAO {
 	public static void Create(Cliente cliente) {
 		PreparedStatement pst=null;		
 		
-		String sql=("INSERT INTO CLIENTE(CODIGO, NOME, CPF) VALUES ("
-		+ cliente.getCodigo()+",'"+cliente.getNome()+"',"+cliente.getCpf()+ ")");
+		String sql=("{CALL CADASTRA_CLIENTE("
+		+ cliente.getCodigo()+",'"+cliente.getNome()+"',"+cliente.getCpf()+ ")}");
 		
 		try {
 			pst = Conexao.executaStatement(sql);
@@ -32,7 +32,7 @@ public class ClienteDAO {
 	public static void Delete(String codigo){
         PreparedStatement pst=null;		
 		
-		String sql=("DELETE CLIENTE WHERE CODIGO = "+codigo);
+		String sql=("{CALL DEL_CLIENTE("+codigo+")}");
 		
 		try {
 			pst = Conexao.executaStatement(sql);
@@ -141,5 +141,27 @@ public class ClienteDAO {
 			Conexao.fechaConexaoBanco();
 			Conexao.fechaPreparedStatement();
 		}
+	}
+	public static String Total_Gasto(String codigo){
+		String total = "";
+		PreparedStatement pst = null;		
+		ResultSet rs;
+		String sql=("SELECT CLIENTE_GASTO("+codigo+") as TOTAL FROM DUAL");
+		try {
+			pst = Conexao.executaStatement(sql);
+			rs=pst.executeQuery();
+			while (rs.next()){
+				total = rs.getString("TOTAL");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			Conexao.fechaConexaoBanco();
+			Conexao.fechaPreparedStatement();
+		}
+		
+		
+		return total;
 	}
 }

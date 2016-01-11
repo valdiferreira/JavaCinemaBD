@@ -25,6 +25,7 @@ import java.awt.event.ActionEvent;
 import java.io.IOException;
 
 import javax.swing.JLabel;
+import java.awt.Toolkit;
 
 public class TelaPrincipal extends JFrame {
 
@@ -33,25 +34,28 @@ public class TelaPrincipal extends JFrame {
 	/**
 	 * Launch the application.
 	 */
-	public static void main(String[] args) {
+	/*public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					TelaPrincipal frame = new TelaPrincipal();
-					frame.setVisible(true);
-					frame.setIconImage(new ImageIcon(getClass().getResource("/Movies-icon.png")).getImage());
-					frame.setTitle("Sistema de Gest\u00E3o de Dados");
+					TelaPrincipal frame2 = new TelaPrincipal();
+					frame2.setVisible(true);
+					frame2.setIconImage(new ImageIcon(getClass().getResource("/Movies-icon.png")).getImage());
+					frame2.setTitle("Sistema de Gest\u00E3o de Dados");
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
 			}
 		});
-	}
+	}*/
 
 	/**
 	 * Create the frame.
 	 */
 	public TelaPrincipal() {
+		setVisible(true);
+		setIconImage(new ImageIcon(getClass().getResource("/Movies-icon.png")).getImage());
+		setTitle("Sistema de Gest\u00E3o de Dados");
 		
 		CardLayout cards_Index = new CardLayout();
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -76,10 +80,10 @@ public class TelaPrincipal extends JFrame {
 		btnCliente.setIcon(new ImageIcon("img/cliente.png"));
 		btnCliente.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				
 				JPanel clienteIndex = new ClienteIndex();
 				Index.add(clienteIndex, "clienteIndex");
 				cards_Index.show(Index,"clienteIndex");
+				lblCapa.setVisible(false);
 			}
 		});
 		btnCliente.setBounds(2, 5, 89, 23);
@@ -93,6 +97,7 @@ public class TelaPrincipal extends JFrame {
 				JPanel atorIndex = new AtorIndex();
 				Index.add(atorIndex, "atorIndex");
 				cards_Index.show(Index,"atorIndex");
+				lblCapa.setVisible(false);
 			}
 		});
 		btnAtor.setBounds(95, 5, 89, 23);
@@ -106,6 +111,7 @@ public class TelaPrincipal extends JFrame {
 				JPanel filmeIndex = new FilmeIndex();
 				Index.add(filmeIndex, "filmeIndex");
 				cards_Index.show(Index,"filmeIndex");
+				lblCapa.setVisible(false);
 			}
 		});
 		btnFilme.setBounds(190, 5, 89, 23);
@@ -119,6 +125,7 @@ public class TelaPrincipal extends JFrame {
 				JPanel diretorIndex = new DiretorIndex();
 				Index.add(diretorIndex, "diretorIndex");
 				cards_Index.show(Index,"diretorIndex");
+				lblCapa.setVisible(false);
 			}
 		});
 		btnDiretor.setBounds(285, 5, 89, 23);
@@ -132,6 +139,7 @@ public class TelaPrincipal extends JFrame {
 				JPanel funcionarioIndex = new FuncionarioIndex();
 				Index.add(funcionarioIndex, "FuncionarioIndex");
 				cards_Index.show(Index,"FuncionarioIndex");
+				lblCapa.setVisible(false);
 			}
 		});
 		btnFuncionario.setBounds(382, 5, 111, 23);
@@ -145,6 +153,7 @@ public class TelaPrincipal extends JFrame {
 				JPanel salaIndex = new SalaIndex();
 				Index.add(salaIndex, "SalaIndex");
 				cards_Index.show(Index,"SalaIndex");
+				lblCapa.setVisible(false);
 			}
 		});
 		btnSala.setBounds(500, 5, 89, 23);
@@ -158,6 +167,7 @@ public class TelaPrincipal extends JFrame {
 				JPanel compraIndex = new CompraIndex();
 				Index.add(compraIndex, "CompraIndex");
 				cards_Index.show(Index,"CompraIndex");
+				lblCapa.setVisible(false);
 			}
 		});
 		btnCompra.setBounds(599, 5, 89, 23);
@@ -171,6 +181,7 @@ public class TelaPrincipal extends JFrame {
 				JPanel funcaoIndex = new FuncaoIndex();
 				Index.add(funcaoIndex, "FuncaoIndex");
 				cards_Index.show(Index,"FuncaoIndex");
+				lblCapa.setVisible(false);
 			}
 		});
 		btnFuno.setBounds(698, 5, 89, 23);
@@ -184,6 +195,7 @@ public class TelaPrincipal extends JFrame {
 				JPanel sessaoIndex = new SessaoIndex();
 				Index.add(sessaoIndex, "SessaoIndex");
 				cards_Index.show(Index,"SessaoIndex");
+				lblCapa.setVisible(false);
 			}
 		});
 		btnSessao.setBounds(792, 5, 89, 23);
@@ -196,6 +208,7 @@ public class TelaPrincipal extends JFrame {
 				JPanel cinemaIndex = new CinemaIndex();
 				Index.add(cinemaIndex, "CinemaIndex");
 				cards_Index.show(Index,"CinemaIndex");
+				lblCapa.setVisible(false);
 			}
 		});
 		btnCinema.setIcon(new ImageIcon("img/cinema-2.png"));

@@ -73,7 +73,7 @@ public class AtorIndex extends JPanel {
 		
 		JLabel lblAtor = new JLabel("Ator");
 		lblAtor.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblAtor.setBounds(377, 57, 63, 20);
+		lblAtor.setBounds(376, 77, 63, 20);
 		atorInicio.add(lblAtor);
 		
 		btnBuscar.addActionListener(new ActionListener() {
@@ -85,7 +85,7 @@ public class AtorIndex extends JPanel {
 				atorCard.show(atorPanelCards, "Dados");
 			}
 		});
-		atorPanelCards.setBounds(0, 75, 884, 389);
+		atorPanelCards.setBounds(0, 66, 884, 398);
 		add(atorPanelCards);
 		atorPanelCards.setLayout(atorCard);
 		atorCard.show(atorPanelCards, "atorInicio");
@@ -110,6 +110,11 @@ public class AtorIndex extends JPanel {
 		table.setEnabled(false);
 		table.setModel(date);
 		scrollPane.setViewportView(table);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setIcon(new ImageIcon("img/ator-2.png"));
+		lblNewLabel_1.setBounds(420, 68, 29, 32);
+		atorInicio.add(lblNewLabel_1);
 
 	}
 }

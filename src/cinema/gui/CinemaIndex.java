@@ -47,7 +47,7 @@ public class CinemaIndex extends JPanel {
 		btnPesquisar.setIcon(new ImageIcon("img/search.png"));
 		btnPesquisar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JPanel cinemaUpdate = new CinemaUpdate(CinemaController.busca(codigoField.getText()));
+				JPanel cinemaUpdate = new CinemaUpdate(CinemaController.busca(codigoField.getText()), CinemaController.ingressos(codigoField.getText()), CinemaController.lucro(codigoField.getText()));
 				cinemaUpdate.setBounds(0, 75, 884, 389);
 				CinemaPanelCards.add(cinemaUpdate, "Buscar");
 				CinemaInicio.setVisible(false);
@@ -94,6 +94,11 @@ public class CinemaIndex extends JPanel {
 		table.setEnabled(false);
 		table.setModel(date);
 		scrollPane.setViewportView(table);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("img/cinema-22.png"));
+		lblNewLabel.setBounds(440, 52, 32, 32);
+		CinemaInicio.add(lblNewLabel);
 		
 		//Linhas da tabela
 		ArrayList<String> dados = new ArrayList<String>();

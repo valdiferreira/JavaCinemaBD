@@ -97,6 +97,7 @@ public class login {
 				String cpf = new String(textField.getText());
 				if(AutenticationController.Autentication(cpf, senha)){
 					frame.setVisible(false);
+					frame.dispose();
 				    new TelaPrincipal().setVisible(true);
 				}else{
 					JOptionPane.showMessageDialog(null,

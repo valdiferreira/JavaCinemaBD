@@ -12,7 +12,7 @@ public class CompraDAO {
 	
 	public static void Create(Compra compra) {
 		PreparedStatement pst = null;
-		String sql = ("INSERT INTO COMPRA (CODIGO, DATA_HORA, FORMA_PAGAMENTO, QTD_INGRESSO, VALOR_TOTAL, COD_CLIENTE, COD_SESSAO) VALUES ('"+compra.getCodigo()+"', TIMESTAMP '"+compra.getData_hora()+" 17:45:00.12', '"+compra.getForma_pagameto()+"', '"+compra.getQtd_ingresso()+"', '"+compra.getValor_total()+"', '"+compra.getCod_cliente()+"', '"+compra.getCod_sessao()+"')");
+		String sql = ("{CALL REGISTRO_DE_COMPRA('"+compra.getCodigo()+"', TIMESTAMP '"+compra.getData_hora()+" 17:45:00.12', '"+compra.getForma_pagameto()+"', '"+compra.getQtd_ingresso()+"', '"+compra.getValor_total()+"', '"+compra.getCod_cliente()+"', '"+compra.getCod_sessao()+"')}");
 		try {
 			pst = Conexao.executaStatement(sql);
 			pst.execute();

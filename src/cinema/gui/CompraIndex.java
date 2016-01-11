@@ -97,6 +97,11 @@ public class CompraIndex extends JPanel {
 		table.setModel(date);
 		scrollPane.setViewportView(table);
 		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("img/compra-2.png"));
+		lblNewLabel.setBounds(450, 44, 41, 32);
+		CompraInicio.add(lblNewLabel);
+		
 		//Linhas da tabela
 		ArrayList<String> dados = new ArrayList<String>();
 		dados = CompraController.listar();

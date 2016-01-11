@@ -89,6 +89,11 @@ public class ClienteIndex extends JPanel {
 		table.setModel(date);
 		scrollPane.setViewportView(table);
 		
+		JLabel lblClienteIcon = new JLabel("");
+		lblClienteIcon.setIcon(new ImageIcon("img/cliente-2.png"));
+		lblClienteIcon.setBounds(450, 45, 41, 32);
+		ClienteInicio.add(lblClienteIcon);
+		
 		//Linhas da tabela
 		ArrayList<String> dados = new ArrayList<String>();
 		dados = ClienteController.listar();
@@ -101,7 +106,7 @@ public class ClienteIndex extends JPanel {
 		btnBuscar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				JPanel clienteUpdate = new ClienteUpdate(ClienteController.busca(buscarTextField.getText()));
+				JPanel clienteUpdate = new ClienteUpdate(ClienteController.busca(buscarTextField.getText()), ClienteController.total_gasto(buscarTextField.getText()));
 				clienteUpdate.setBounds(0, 75, 884, 389);
 				ClientePanelCards.add(clienteUpdate, "Buscar");
 				ClienteInicio.setVisible(false);

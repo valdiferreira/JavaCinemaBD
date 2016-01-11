@@ -35,5 +35,7 @@ public class ClienteController {
 	public static ArrayList<String> listar(){
 		return ClienteDAO.Listar();
 	}
-	
+	public static String total_gasto(String codigo){
+		return ClienteDAO.Total_Gasto(codigo);
+	}
 }

@@ -35,4 +35,13 @@ public class CinemaController {
  	public static void del_telefone(String codigo, String numero){
  		CinemaDAO.Del_Telefone(codigo, numero);
  	}
+ 	public static String ingressos(String codigo){
+ 		return CinemaDAO.Ingressos(codigo);
+ 	}
+ 	public static String lucro(String codigo){
+ 		return CinemaDAO.Lucro(codigo);
+ 	}
+ 	public static ArrayList<String> lista_filmes(String codigo){
+ 		return CinemaDAO.Lista_Filmes(codigo);
+ 	}
 }

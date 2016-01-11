@@ -121,5 +121,27 @@ public class SessaoDAO {
 		
 		return dados;
 	}
+	public static String Assentos(String codigo){
+		String total = "";
+		PreparedStatement pst = null;		
+		ResultSet rs;
+		String sql=("SELECT LUGARES("+codigo+") as TOTAL FROM DUAL");
+		try {
+			pst = Conexao.executaStatement(sql);
+			rs=pst.executeQuery();
+			while (rs.next()){
+				total = rs.getString("TOTAL");
+			}
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}finally {
+			Conexao.fechaConexaoBanco();
+			Conexao.fechaPreparedStatement();
+		}
+		
+		
+		return total;
+	}
 
 }

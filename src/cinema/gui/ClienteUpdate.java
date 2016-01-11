@@ -27,6 +27,7 @@ public class ClienteUpdate extends JPanel {
 	private JTextField codigoField;
 	private JTextField idFoneField;
 	private JTextField numeroFoneField;
+	private JTextField totalField;
 	
 	
 	/**
@@ -34,7 +35,7 @@ public class ClienteUpdate extends JPanel {
 	 */
 
 	
-	public ClienteUpdate(Cliente cliente) {
+	public ClienteUpdate(Cliente cliente, String total_gasto) {
 		this.codidoCliente=cliente.getCodigo();
 		setLayout(null);
 
@@ -150,6 +151,18 @@ public class ClienteUpdate extends JPanel {
 		add(btnDeletar);
 		btnDeletar.setBorder(new RoundedBorder(5));
 		
+		JLabel lblTotalGasto = new JLabel("Total gasto");
+		lblTotalGasto.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblTotalGasto.setBounds(88, 50, 108, 21);
+		add(lblTotalGasto);
+		
+		totalField = new JTextField();
+		totalField.setEditable(false);
+		totalField.setBounds(98, 82, 63, 20);
+		add(totalField);
+		totalField.setColumns(10);
+		totalField.setText(total_gasto);
+		
 		btnUpdate.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				
@@ -159,11 +172,11 @@ public class ClienteUpdate extends JPanel {
 					    "Confirmação",
 					    JOptionPane.YES_NO_OPTION);
 				if (n==0){
-				cliente.setCodigo(codidoCliente);
-				cliente.setCpf(cpfField.getText());
-				cliente.setNome(nomeField.getText());
-				ClienteController.update(cliente);
-				JOptionPane.showMessageDialog(null, "Cliente atualizado com sucesso.", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
+					cliente.setCodigo(codidoCliente);
+					cliente.setCpf(cpfField.getText());
+					cliente.setNome(nomeField.getText());
+					ClienteController.update(cliente);
+					JOptionPane.showMessageDialog(null, "Cliente atualizado com sucesso.", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
 				}
 				
 				

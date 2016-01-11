@@ -102,6 +102,11 @@ public class FilmeIndex extends JPanel {
 		table.setModel(date);
 		scrollPane.setViewportView(table);
 		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("img/filme-2.png"));
+		lblNewLabel.setBounds(430, 45, 32, 32);
+		FilmeInicio.add(lblNewLabel);
+		
 		//Linhas da tabela
 		ArrayList<String> dados = new ArrayList<String>();
 		dados = FilmeController.listar();

@@ -76,7 +76,7 @@ public class FuncionarioIndex extends JPanel {
 		
 		JLabel lblFuncionario = new JLabel("Funcion\u00E1rio");
 		lblFuncionario.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblFuncionario.setBounds(377, 57, 119, 20);
+		lblFuncionario.setBounds(377, 57, 100, 20);
 		FuncionarioInicio.add(lblFuncionario);
 		
 		FuncionarioPanelCards.setBounds(0, 75, 884, 389);
@@ -95,6 +95,11 @@ public class FuncionarioIndex extends JPanel {
 		table.setEnabled(false);
 		table.setModel(date);
 		scrollPane.setViewportView(table);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("img/funcionario-2.png"));
+		lblNewLabel.setBounds(472, 45, 36, 32);
+		FuncionarioInicio.add(lblNewLabel);
 		
 		//Linhas da tabela
 		ArrayList<String> dados = new ArrayList<String>();

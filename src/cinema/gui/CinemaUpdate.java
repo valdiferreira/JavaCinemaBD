@@ -10,13 +10,17 @@ import cinema.dominio.*;
 
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.ImageIcon;
+import javax.swing.table.DefaultTableModel;
 
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 
 public class CinemaUpdate extends JPanel {
 
@@ -29,8 +33,10 @@ public class CinemaUpdate extends JPanel {
 	private JTextField numeroField;
 	private JTextField codField;
 	private JTextField telefoneField;
+	private JTextField totalField;
+	private JTextField lucroField;
 
-	public CinemaUpdate(Cinema cinema) {
+	public CinemaUpdate(Cinema cinema, String total, String lucro) {
 		setLayout(null);
 		
 		JLabel lblCodigo = new JLabel("Codigo");
@@ -103,7 +109,7 @@ public class CinemaUpdate extends JPanel {
 			}
 		});
 		btnAtualizar.setIcon(new ImageIcon("img/atualizar.png"));
-		btnAtualizar.setBounds(185, 228, 111, 23);
+		btnAtualizar.setBounds(185, 252, 111, 23);
 		add(btnAtualizar);
 		btnAtualizar.setBorder(new RoundedBorder(5));
 		
@@ -115,7 +121,7 @@ public class CinemaUpdate extends JPanel {
 			}
 		});
 		btnDeletar.setIcon(new ImageIcon("img/delete.png"));
-		btnDeletar.setBounds(306, 228, 105, 23);
+		btnDeletar.setBounds(306, 252, 105, 23);
 		add(btnDeletar);
 		btnDeletar.setBorder(new RoundedBorder(5));
 		
@@ -179,6 +185,55 @@ public class CinemaUpdate extends JPanel {
 		btnDeletar_1.setBounds(688, 111, 105, 23);
 		add(btnDeletar_1);
 		btnDeletar_1.setBorder(new RoundedBorder(5));
+		
+		JLabel lblIngressosVendido = new JLabel("Ingressos Vendidos");
+		lblIngressosVendido.setBounds(288, 199, 123, 14);
+		add(lblIngressosVendido);
+		
+		totalField = new JTextField();
+		totalField.setEditable(false);
+		totalField.setBounds(409, 196, 31, 20);
+		add(totalField);
+		totalField.setColumns(10);
+		totalField.setText(total);
+		
+		JLabel lblLucroTotal = new JLabel("Lucro total  R$");
+		lblLucroTotal.setFont(new Font("Tahoma", Font.BOLD, 12));
+		lblLucroTotal.setBounds(219, 224, 99, 14);
+		add(lblLucroTotal);
+		
+		lucroField = new JTextField();
+		lucroField.setEditable(false);
+		lucroField.setBounds(323, 221, 40, 20);
+		add(lucroField);
+		lucroField.setColumns(10);
+		lucroField.setText(lucro);
+		
+		//Colunas da tabela
+		String[] colunas = new String[]{"Nome", "Genero"};
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setBounds(494, 196, 323, 87);
+		add(scrollPane);
+		DefaultTableModel date = new DefaultTableModel(colunas, 0);
+		JTable table = new JTable();
+		table.setEnabled(false);
+		table.setModel(date);
+		scrollPane.setViewportView(table);
+		
+		JLabel lblFimesEmCartaz = new JLabel("Fimes em cartaz");
+		lblFimesEmCartaz.setFont(new Font("Tahoma", Font.BOLD, 15));
+		lblFimesEmCartaz.setBounds(594, 163, 143, 14);
+		add(lblFimesEmCartaz);
+		
+		//Linhas da tabela
+		ArrayList<String> dados = new ArrayList<String>();
+		dados = CinemaController.lista_filmes(cinema.getCodigo());
+		String[] linha;
+		for(int i = 0; i < dados.size(); i++){
+			linha = dados.get(i).split(";");
+			date.addRow(linha);
+		}
 		
 	}
 }

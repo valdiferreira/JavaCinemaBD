@@ -76,7 +76,7 @@ public class SalaIndex extends JPanel {
 		
 		JLabel lblSala = new JLabel("Sala");
 		lblSala.setFont(new Font("Tahoma", Font.BOLD, 15));
-		lblSala.setBounds(377, 57, 119, 20);
+		lblSala.setBounds(377, 57, 49, 20);
 		SalaInicio.add(lblSala);
 		
 		cod_cinemaField = new JTextField();
@@ -104,6 +104,11 @@ public class SalaIndex extends JPanel {
 		table.setEnabled(false);
 		table.setModel(date);
 		scrollPane.setViewportView(table);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("img/sala-2.png"));
+		lblNewLabel.setBounds(420, 44, 39, 32);
+		SalaInicio.add(lblNewLabel);
 		
 		//Linhas da tabela
 		ArrayList<String> dados = new ArrayList<String>();

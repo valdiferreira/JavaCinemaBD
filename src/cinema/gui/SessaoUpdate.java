@@ -36,8 +36,9 @@ public class SessaoUpdate extends JPanel {
 	private JTextField cpfField;
 	private JTextField funcaoField;
 	private JTextField sessaoField;
+	private JTextField assentosField;
 
-	public SessaoUpdate(Sessao sessao) {
+	public SessaoUpdate(Sessao sessao, String assentos) {
 		setLayout(null);
 		
 		JLabel lblInformaesDaSessao = new JLabel("Informa\u00E7\u00F5es da Sess\u00E3o");
@@ -124,7 +125,7 @@ public class SessaoUpdate extends JPanel {
 		});
 		btnAtualizar.addContainerListener(new ContainerAdapter() {
 		});
-		btnAtualizar.setBounds(102, 231, 123, 23);
+		btnAtualizar.setBounds(102, 255, 123, 23);
 		add(btnAtualizar);
 		
 		JButton btnDeletar = new JButton("Deletar");
@@ -135,7 +136,7 @@ public class SessaoUpdate extends JPanel {
 				JOptionPane.showMessageDialog(null, "Sessão deletada com sucesso.", "Confirmação", JOptionPane.INFORMATION_MESSAGE);
 			}
 		});
-		btnDeletar.setBounds(235, 231, 108, 23);
+		btnDeletar.setBounds(235, 255, 108, 23);
 		add(btnDeletar);
 		
 		JLabel lblExAaaammdd = new JLabel("Ex: AAAA-MM-DD 2015-12-23");
@@ -195,6 +196,17 @@ public class SessaoUpdate extends JPanel {
 		});
 		btnDeletar_1.setBounds(667, 157, 102, 23);
 		add(btnDeletar_1);
+		
+		assentosField = new JTextField();
+		assentosField.setEditable(false);
+		assentosField.setBounds(204, 224, 35, 20);
+		add(assentosField);
+		assentosField.setColumns(10);
+		assentosField.setText(assentos);
+		
+		JLabel lblAssentosRestantes = new JLabel("Assentos restantes");
+		lblAssentosRestantes.setBounds(79, 228, 115, 14);
+		add(lblAssentosRestantes);
 		
 	}
 }

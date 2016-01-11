@@ -42,7 +42,7 @@ public class SessaoIndex extends JPanel {
 		btnPesquisar.setIcon(new ImageIcon("img/search.png"));
 		btnPesquisar.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				JPanel sessaoUpdate = new SessaoUpdate(SessaoController.busca(codigoField.getText()));
+				JPanel sessaoUpdate = new SessaoUpdate(SessaoController.busca(codigoField.getText()), SessaoController.assentos(codigoField.getText()));
 				sessaoUpdate.setBounds(0, 75, 884, 389);
 				SessaoPanelCards.add(sessaoUpdate, "Buscar");
 				SessaoInicio.setVisible(false);
@@ -98,6 +98,11 @@ public class SessaoIndex extends JPanel {
 		table.setEnabled(false);
 		table.setModel(date);
 		scrollPane.setViewportView(table);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("img/sessao-2.png"));
+		lblNewLabel.setBounds(437, 54, 32, 32);
+		SessaoInicio.add(lblNewLabel);
 		
 		//Linhas da tabela
 		ArrayList<String> dados = new ArrayList<String>();

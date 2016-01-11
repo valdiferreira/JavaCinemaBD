@@ -90,13 +90,18 @@ public class FuncaoIndex extends JPanel {
 		String[] colunas = new String[]{"Codigo","Descrição"};
 		
 		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setBounds(268, 157, 327, 84);
+		scrollPane.setBounds(268, 157, 327, 70);
 		FuncaoInicio.add(scrollPane);
 		DefaultTableModel date = new DefaultTableModel(colunas, 0);
 		JTable table = new JTable();
 		table.setEnabled(false);
 		table.setModel(date);
 		scrollPane.setViewportView(table);
+		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("img/funcao-2.png"));
+		lblNewLabel.setBounds(438, 45, 32, 32);
+		FuncaoInicio.add(lblNewLabel);
 		
 		//Linhas da tabela
 		ArrayList<String> dados = new ArrayList<String>();

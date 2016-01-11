@@ -10,9 +10,8 @@ public class FuncionarioDAO {
 	public static void Create(Funcionario funcionario){
 		PreparedStatement pst=null;
 		//Inserção de funcionarios a partir do Objeto funcionario.
-		String sql=("INSERT INTO FUNCIONARIO(CPF, NOME_FUNCIONARIO, NUM_CARTEIRA_TRABALHO, RUA, BAIRRO, NUMERO, COD_CINEMA, SENHA) "
-				+ "VALUES('"+funcionario.getCpf()+"', '"+funcionario.getNome()+"', '"+funcionario.getNct()+"', '"+funcionario.getRua()+"', '"+funcionario.getBairro()+"', '"
-				+funcionario.getNumero()+"', '"+funcionario.getCod_cinema()+"', '"+funcionario.getSenha()+"')");
+		String sql=("{CALL CADASTRA_FUNC('"+funcionario.getNome()+"', '"+funcionario.getCpf()+"', '"+funcionario.getNct()+"', '"+funcionario.getRua()+"', '"+funcionario.getBairro()+"', '"
+				+funcionario.getNumero()+"', '"+funcionario.getCod_cinema()+"', '"+funcionario.getSenha()+"')}");
 		try {
 			pst = Conexao.executaStatement(sql);
 			pst.execute();
@@ -27,7 +26,7 @@ public class FuncionarioDAO {
 	public static void Delete(String cpf){
 		PreparedStatement pst=null;
 		//Deleta funcionario a partir do seu CPF
-		String sql=("DELETE FUNCIONARIO WHERE CPF = "+cpf);
+		String sql=("{CALL DEL_FUNC('"+cpf+"')}");
 		try {
 			pst = Conexao.executaStatement(sql);
 			pst.execute();

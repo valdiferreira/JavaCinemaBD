@@ -96,6 +96,11 @@ public class DiretorIndex extends JPanel {
 		table.setModel(date);
 		scrollPane.setViewportView(table);
 		
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("img/diretor-2.png"));
+		lblNewLabel.setBounds(450, 44, 32, 32);
+		DiretorInicio.add(lblNewLabel);
+		
 		//Linhas da tabela
 		ArrayList<String> dados = new ArrayList<String>();
 		dados = DiretorController.listar();
