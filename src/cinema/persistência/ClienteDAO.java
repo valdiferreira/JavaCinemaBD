@@ -12,71 +12,49 @@ import cinema.dominio.Cliente;
 public class ClienteDAO {
 
 	public static void Create(Cliente cliente) {
-		PreparedStatement pst=null;		
+		String sql=("INSERT INTO CLIENTE (CODIGO, NOME, CPF) VALUES ('"+ cliente.getCodigo()+"', '"+cliente.getNome()+"', '"+cliente.getCpf()+"');");
 		
-		String sql=("{CALL CADASTRA_CLIENTE("
-		+ cliente.getCodigo()+",'"+cliente.getNome()+"',"+cliente.getCpf()+ ")}");
 		
-		try {
-			pst = Conexao.executaStatement(sql);
-			pst.execute();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			Conexao.fechaConexaoBanco();
-			Conexao.fechaPreparedStatement();
-		}
+		Conecta.ExecuteQuery(sql);
 		
 	}	
 	
 	public static void Delete(String codigo){
-        PreparedStatement pst=null;		
-		
-		String sql=("{CALL DEL_CLIENTE("+codigo+")}");
-		
-		try {
-			pst = Conexao.executaStatement(sql);
-			pst.execute();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			Conexao.fechaConexaoBanco();
-			Conexao.fechaPreparedStatement();
-		}
+		String sql = null;
+		sql = ("DELETE [cinema].[dbo].[CLIENTE_TELEFONE] WHERE COD_cliente ="+codigo);
+		Conecta.ExecuteQuery(sql);
+		sql = ("DELETE [cinema].[dbo].[COMPRA] WHERE COD_CLIENTE ="+codigo);
+		Conecta.ExecuteQuery(sql);
+		sql=("DELETE [cinema].[dbo].[CLIENTE] WHERE CODIGO ="+codigo);
+		Conecta.ExecuteQuery(sql);
 		
 	}
 	public static ArrayList<String> Listar(){
 		ArrayList<String> dados = new ArrayList<String>();
-		PreparedStatement pst=null;		
-		ResultSet rs;
-		String sql=("SELECT * FROM CLIENTE");
+		ResultSet rs = null;
+		String sql=("SELECT * FROM [cinema].[dbo].[CLIENTE]");
 		
 		try {
-			pst = Conexao.executaStatement(sql);
-			rs=pst.executeQuery();
+			rs = Conecta.GetResultQuery(sql);
 			while (rs.next()){
 				dados.add(rs.getString("CODIGO")+";"+rs.getString("NOME")+";"+rs.getString("CPF"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			Conexao.fechaConexaoBanco();
-			Conexao.fechaPreparedStatement();
-		}
+		}finally {  
+	         if (rs != null) try { rs.close(); } catch(Exception e) {}    
+	    }
 		
 		return dados;
 	}
 	public static Cliente Busca(String codigo){
 		Cliente cliente = new Cliente ();
-		PreparedStatement pst = null;		
-		ResultSet rs;
-		String sql=("SELECT * FROM CLIENTE WHERE CODIGO = "+codigo);
+		ResultSet rs = null;
+		String sql=("SELECT * FROM [cinema].[dbo].[CLIENTE] WHERE CODIGO = "+codigo);
 		
 		try {
-			pst = Conexao.executaStatement(sql);
-			rs=pst.executeQuery();
+			rs=Conecta.GetResultQuery(sql);
 			while (rs.next()){
-				
 				cliente.setCpf(rs.getString("CPF"));
 				cliente.setCodigo(rs.getString("CODIGO"));
 				cliente.setNome(rs.getString("NOME"));
@@ -85,81 +63,45 @@ public class ClienteDAO {
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			Conexao.fechaConexaoBanco();
-			Conexao.fechaPreparedStatement();
-		}
-		
-		
+		}finally {  
+	         if (rs != null) try { rs.close(); } catch(Exception e) {}    
+	     }
 		return cliente;
 	}
 	
 	
-	public static void Update(Cliente cliente) {
-	PreparedStatement pst = null;		
-		
-		String sql=("UPDATE CLIENTE SET NOME ='"+cliente.getNome()+"', CPF = "+cliente.getCpf()+
+	public static void Update(Cliente cliente) {		
+		String sql=("UPDATE [cinema].[dbo].[CLIENTE] SET NOME ='"+cliente.getNome()+"', CPF = "+cliente.getCpf()+
 				" WHERE CODIGO = "+cliente.getCodigo());
 		
-		try {
-			pst = Conexao.executaStatement(sql);
-			pst.execute();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			Conexao.fechaConexaoBanco();
-			Conexao.fechaPreparedStatement();
-		
-		
-		}
+		Conecta.ExecuteQuery(sql);
 	}
 	public static void Telefone(String codigo, String numero){
-		PreparedStatement pst=null;		
+		String sql=("INSERT INTO [cinema].[dbo].[CLIENTE_TELEFONE] (COD_CLIENTE, TELEFONE) VALUES ('"+codigo+"', '"+numero+"')");
 		
-		String sql=("INSERT INTO CLIENTE_TELEFONE (COD_CLIENTE, TELEFONE) VALUES ('"+codigo+"', '"+numero+"')");
+		Conecta.ExecuteQuery(sql);
 		
-		try {
-			pst = Conexao.executaStatement(sql);
-			pst.execute();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			Conexao.fechaConexaoBanco();
-			Conexao.fechaPreparedStatement();
-		}
 	}
 	public static void Del_Telefone(String codigo, String numero){
-		PreparedStatement pst=null;		
-		String sql=("DELETE CLIENTE_TELEFONE WHERE COD_CLIENTE = "+codigo+" AND TELEFONE = "+numero+"");
+		String sql=("DELETE [cinema].[dbo].[CLIENTE_TELEFONE] WHERE COD_CLIENTE = "+codigo+" AND TELEFONE = "+numero+"");
 
-		try {
-			pst = Conexao.executaStatement(sql);
-			pst.execute();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			Conexao.fechaConexaoBanco();
-			Conexao.fechaPreparedStatement();
-		}
+		Conecta.ExecuteQuery(sql);
 	}
 	public static String Total_Gasto(String codigo){
-		String total = "";
-		PreparedStatement pst = null;		
-		ResultSet rs;
-		String sql=("SELECT CLIENTE_GASTO("+codigo+") as TOTAL FROM DUAL");
+		String total = "";	
+		ResultSet rs = null;
+		String sql=("SELECT SUM(COMPRA.VALOR_TOTAL) AS TOTAL FROM [cinema].[dbo].[COMPRA] WHERE COMPRA.COD_CLIENTE = "+codigo);
 		try {
-			pst = Conexao.executaStatement(sql);
-			rs=pst.executeQuery();
+			rs = Conecta.GetResultQuery(sql);
 			while (rs.next()){
 				total = rs.getString("TOTAL");
 			}
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			Conexao.fechaConexaoBanco();
-			Conexao.fechaPreparedStatement();
-		}
+		}finally {  
+	         if (rs != null) try { rs.close(); } catch(Exception e) {}    
+	      }
 		
 		
 		return total;

@@ -2,12 +2,12 @@ package cinema.persistência;
 import java.sql.*;
 
 public class Conecta {
-	public static String url = "jdbc:sqlserver://localhost:1433;databaseName=smartcase;integratedSecurity=true";
+	public static String url = "jdbc:sqlserver://localhost:1433;databaseName=cinema;integratedSecurity=true";
 	public static Connection con = null;  
     public static Statement stmt = null;  
     public static ResultSet rs = null;
     
-    //Método utilizado para execução de QUerys que retornam dados, EX: SELECT * FROM
+    //Método utilizado para execução de QUerys que retornam dados, EX: SELECT FROM
 	public static ResultSet GetResultQuery(String sql){
 		try {
 			
@@ -17,7 +17,8 @@ public class Conecta {
 	  
 	         // Execução de SQL.  
 	         stmt = con.createStatement();  
-	         rs = stmt.executeQuery(sql);  
+	         rs = stmt.executeQuery(sql);
+	         return rs;
 	       
 	      }  
 	  
@@ -27,7 +28,7 @@ public class Conecta {
 	      }
 		
 		//Retorna o sql
-		return rs;
+		return null;
 		
 	}
 	
