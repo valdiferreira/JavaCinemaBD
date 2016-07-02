@@ -7,21 +7,18 @@ import cinema.dominio.Autentication;
 public class AutenticationDAO {
 
 	public static boolean Autentication(Autentication autentication){
-		PreparedStatement pst = null;	
-		String sql=("SELECT SENHA FROM FUNCIONARIO WHERE CPF="+autentication.getInput_cpf());
-		ResultSet rs;
+		String sql=("SELECT SENHA FROM [cinema].[dbo].[FUNCIONARIO] WHERE CPF='"+autentication.getInput_cpf()+"'");
+		ResultSet rs = null;
 		try {
-			pst = Conexao.executaStatement(sql);
-			rs = pst.executeQuery();
+			rs = Conecta.GetResultQuery(sql);
 			while(rs.next()) {
 				autentication.setOutput_senha(rs.getString("SENHA"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
-		}finally {
-			Conexao.fechaConexaoBanco();
-			Conexao.fechaPreparedStatement();
-		}
+		}finally {  
+	         if (rs != null) try { rs.close(); } catch(Exception e) {}    
+	      }
 		if(autentication.getInput_senha().equals(autentication.getOutput_senha())){
 			return true;
 		}else{
