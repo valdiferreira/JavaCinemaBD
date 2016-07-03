@@ -1,28 +1,24 @@
 package cinema.gui;
 
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ContainerAdapter;
 import java.awt.event.MouseAdapter;
 
 import cinema.controllers.*;
-import cinema.dominio.*;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.ImageIcon;
 
-public class SessaoCria extends JPanel{
+@SuppressWarnings("serial")
+public class SessaoCria {
 
-	private JFrame frame;
 	private JTextField codigoField;
 	private JTextField cod_cinemaField;
 	private JTextField cod_filmeField;

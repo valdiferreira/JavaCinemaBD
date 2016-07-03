@@ -1,15 +1,10 @@
 package cinema.gui;
 
 import java.awt.CardLayout;
-import java.awt.EventQueue;
 
-import cinema.controllers.AtorController;
-import cinema.controllers.ClienteController;
 import cinema.controllers.FilmeController;
-import cinema.dominio.*;
 
 import javax.swing.ImageIcon;
-import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -23,9 +18,9 @@ import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.util.ArrayList;
 
-public class FilmeIndex extends JPanel {
+@SuppressWarnings("serial")
+public class FilmeIndex {
 
-	private JFrame frame;
 	private JTextField codigoField;
 	private JButton btnPesquisar;
 

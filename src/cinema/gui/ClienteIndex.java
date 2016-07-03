@@ -14,15 +14,14 @@ import java.awt.event.ActionEvent;
 import javax.swing.JLabel;
 
 import java.awt.Font;
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.List;
 
 import javax.swing.JTable;
 import javax.swing.JScrollPane;
 import javax.swing.table.DefaultTableModel;
 
-public class ClienteIndex extends JPanel {
+@SuppressWarnings("serial")
+public class ClienteIndex {
 	
 	private JTextField buscarTextField;
 

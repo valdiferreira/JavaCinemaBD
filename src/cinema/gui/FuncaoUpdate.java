@@ -1,9 +1,6 @@
 package cinema.gui;
 
-import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 import cinema.controllers.*;
 import cinema.dominio.*;
@@ -14,17 +11,16 @@ import java.awt.Font;
 
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
-import javax.swing.JTextPane;
-import javax.swing.JTextArea;
 import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.ImageIcon;
 
-public class FuncaoUpdate extends JPanel {
+@SuppressWarnings("serial")
+public class FuncaoUpdate {
 
-	private JFrame frame;
 	private JTextField codigoField;
 
 	public FuncaoUpdate(Funcao funcao) {

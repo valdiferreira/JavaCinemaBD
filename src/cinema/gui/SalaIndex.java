@@ -1,7 +1,6 @@
 package cinema.gui;
 
 import java.awt.CardLayout;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -11,7 +10,6 @@ import cinema.controllers.*;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -19,11 +17,10 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-import cinema.controllers.FuncionarioController;
 
-public class SalaIndex extends JPanel {
+@SuppressWarnings("serial")
+public class SalaIndex {
 
-	private JFrame frame;
 	private JTextField cod_cinemaField;
 
 	public SalaIndex() {

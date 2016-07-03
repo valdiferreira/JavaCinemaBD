@@ -1,9 +1,6 @@
 package cinema.gui;
 
-import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 import cinema.controllers.*;
 import cinema.dominio.*;
@@ -18,15 +15,13 @@ import javax.swing.JButton;
 import javax.swing.ImageIcon;
 
 import java.awt.event.ContainerAdapter;
-import java.awt.event.ContainerEvent;
 import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class SessaoUpdate extends JPanel {
+@SuppressWarnings("serial")
+public class SessaoUpdate {
 
-	private JFrame frame;
 	private JTextField codigoField;
 	private JTextField cod_cinemaField;
 	private JTextField cod_filmeField;
@@ -104,7 +99,7 @@ public class SessaoUpdate extends JPanel {
 		cod_cinemaField.setText(sessao.getCod_cinema());
 		cod_filmeField.setText(sessao.getCod_filme());
 		codigoField.setText(sessao.getCodigo());
-		data_horaField.setText(sessao.getData_hora().substring(0,10));
+		data_horaField.setText(sessao.getData_hora());
 		numero_salaField.setText(sessao.getNumero_sala());
 		qtd_publicoField.setText(sessao.getQtd_publico());
 		

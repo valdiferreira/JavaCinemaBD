@@ -1,10 +1,6 @@
 package cinema.gui;
 
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 
 import cinema.controllers.*;
 import cinema.dominio.*;
@@ -18,11 +14,12 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.ImageIcon;
 
-public class CompraUpdate extends JPanel {
+@SuppressWarnings("serial")
+public class CompraUpdate {
 
-	private JFrame frame;
 	private JTextField cod_clienteField;
 	private JTextField cod_sessaoField;
 	private JTextField codigoField;

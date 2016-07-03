@@ -1,10 +1,9 @@
 package cinema.gui;
 
-import javax.swing.JPanel;
+
 
 import cinema.controllers.ClienteController;
 import cinema.dominio.Cliente;
-import cinema.persistência.ClienteDAO;
 
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -12,18 +11,18 @@ import javax.swing.JOptionPane;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.awt.FlowLayout;
 
 import javax.swing.JLabel;
 
 import java.awt.Font;
+
 import javax.swing.ImageIcon;
 
-public class ClienteUpdate extends JPanel {
+@SuppressWarnings("serial")
+public class ClienteUpdate {
 	private String codidoCliente;
 	private JTextField nomeField;
 	private JTextField cpfField;
-	private JButton btnNewButton; 
 	private JTextField codigoField;
 	private JTextField idFoneField;
 	private JTextField numeroFoneField;

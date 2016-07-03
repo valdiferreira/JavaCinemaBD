@@ -1,12 +1,9 @@
 package cinema.gui;
 
-import java.awt.EventQueue;
 
 import cinema.controllers.*;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -14,11 +11,12 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
+
 import javax.swing.ImageIcon;
 
-public class AtorCria extends JPanel {
+@SuppressWarnings("serial")
+public class AtorCria {
 
-	private JFrame frame;
 	private JTextField codigoField;
 	private JTextField dataField;
 	private JTextField nomeField;

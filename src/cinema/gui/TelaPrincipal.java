@@ -1,18 +1,10 @@
 package cinema.gui;
 
-import java.awt.BorderLayout;
 import java.awt.CardLayout;
-import java.awt.Color;
 import java.awt.Component;
-import java.awt.EventQueue;
 import java.awt.Graphics;
-import java.awt.Image;
 import java.awt.Insets;
 
-import javax.imageio.ImageIO;
-import javax.print.DocFlavor.URL;
-import javax.swing.Action;
-import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
@@ -22,12 +14,11 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.io.IOException;
 
 import javax.swing.JLabel;
-import java.awt.Toolkit;
 
-public class TelaPrincipal extends JFrame {
+@SuppressWarnings("serial")
+public class TelaPrincipal {
 
 	private JPanel contentPane;
 

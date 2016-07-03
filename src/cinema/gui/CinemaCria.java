@@ -1,11 +1,8 @@
 package cinema.gui;
 
-import java.awt.EventQueue;
 
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 
 import cinema.controllers.*;
@@ -17,17 +14,15 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 
-public class CinemaCria extends JPanel{
+@SuppressWarnings("serial")
+public class CinemaCria {
 
-	private JFrame frame;
 	private JTextField codigoField;
 	private JTextField nomeField;
 	private JTextField cidadeField;
 	private JTextField bairroField;
 	private JTextField ruaField;
 	private JTextField numeroField;
-	private JTextField codField;
-	private JTextField telefoneField;
 	private JButton btnCadastrar;
 	private JLabel lblCadastrarCinema;
 	

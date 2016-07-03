@@ -8,41 +8,21 @@ import java.util.ArrayList;
 public class AtorDAO {
 	//OBS: FORMATO PARA A DATA (YYYY-MM-DD) EX: 2015-11-21
 	public static void Create(Ator ator) {
-		PreparedStatement pst = null;
-		String sql = ("INSERT INTO ATOR (CODIGO, NOME, NACIONALIDADE, DATA_NASC) VALUES ('"+ator.getCodigo()+"', '"+ator.getNome()+"', '"+ator.getNacionalidade()+"', TO_DATE('"+ator.getData()+" 00:00:00', 'YYYY-MM-DD HH24:MI:SS'))");
-		try {
-			pst = Conexao.executaStatement(sql);
-			pst.execute();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			Conexao.fechaConexaoBanco();
-			Conexao.fechaPreparedStatement();
-		}
+		String sql = ("INSERT INTO ATOR (CODIGO, NOME, NACIONALIDADE, DATA_NASC) VALUES ('"+ator.getCodigo()+"', '"+ator.getNome()+"', '"+ator.getNacionalidade()+"', '"+ator.getData()+"')");
+		Conecta.ExecuteQuery(sql);
 	}
 
 	public static void Delete(String codigo) {
-		PreparedStatement pst = null;
-		String sql = ("DELETE ATOR WHERE CODIGO = "+codigo);
-		try {
-			pst = Conexao.executaStatement(sql);
-			pst.execute();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			Conexao.fechaConexaoBanco();
-			Conexao.fechaPreparedStatement();
-		}
+		String sql = ("DELETE [cinema].[dbo].[ATOR] WHERE CODIGO = "+codigo);
+		Conecta.ExecuteQuery(sql);
 	}
 	//OBS: FORMATO PARA A DATA (YYYY-MM-DD) EX: 2015-11-21
 	public static Ator Busca(String codigo) {
 		Ator ator = new Ator();
-		PreparedStatement pst = null;
-		String sql = ("SELECT * FROM ATOR WHERE CODIGO = "+codigo);
-		ResultSet rs;
+		String sql = ("SELECT * FROM [cinema].[dbo].[ATOR] WHERE CODIGO = "+codigo);
+		ResultSet rs = null;
 		try {
-			pst = Conexao.executaStatement(sql);
-			rs = pst.executeQuery();
+			rs = Conecta.GetResultQuery(sql);
 			while(rs.next()){
 				ator.setCodigo(rs.getString("CODIGO"));
 				ator.setNome(rs.getString("NOME"));
@@ -52,42 +32,29 @@ public class AtorDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			Conexao.fechaConexaoBanco();
-			Conexao.fechaPreparedStatement();
+			if (rs != null) try { rs.close(); } catch(Exception e) {} 
 		}
 		return ator;
 	}
 	//OBS: FORMATO PARA A DATA (YYYY-MM-DD) EX: 2015-11-21
 	public static void Update(Ator ator) {
-		PreparedStatement pst = null;
-		String sql = ("UPDATE ATOR SET NOME = '"+ator.getNome()+"', NACIONALIDADE = '"+ator.getNacionalidade()+"', DATA_NASC = TO_DATE('"+ator.getData()+" 00:00:00', 'YYYY-MM-DD HH24:MI:SS') WHERE CODIGO = "+ator.getCodigo());
-		try {
-			pst = Conexao.executaStatement(sql);
-			pst.execute();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			Conexao.fechaConexaoBanco();
-			Conexao.fechaPreparedStatement();
-		}
+		String sql = ("UPDATE [cinema].[dbo].[ATOR] SET NOME = '"+ator.getNome()+"', NACIONALIDADE = '"+ator.getNacionalidade()+"', DATA_NASC = '"+ator.getData()+"' WHERE CODIGO = "+ator.getCodigo());
+		Conecta.ExecuteQuery(sql);
 	}
 	public static ArrayList<String> Listar(){
 		ArrayList<String> dados = new ArrayList<String>();
-		PreparedStatement pst=null;		
-		ResultSet rs;
-		String sql=("SELECT * FROM ATOR");
+		ResultSet rs = null;
+		String sql=("SELECT * FROM [cinema].[dbo].[ATOR]");
 		
 		try {
-			pst = Conexao.executaStatement(sql);
-			rs=pst.executeQuery();
+			rs = Conecta.GetResultQuery(sql);
 			while (rs.next()){
 				dados.add(rs.getString("CODIGO")+";"+rs.getString("NOME")+";"+rs.getString("NACIONALIDADE")+";"+rs.getString("DATA_NASC").substring(0,10));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			Conexao.fechaConexaoBanco();
-			Conexao.fechaPreparedStatement();
+			if (rs != null) try { rs.close(); } catch(Exception e) {} 
 		}
 		
 		return dados;

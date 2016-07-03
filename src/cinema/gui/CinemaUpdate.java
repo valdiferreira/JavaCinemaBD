@@ -1,9 +1,6 @@
 package cinema.gui;
 
-import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 import cinema.controllers.*;
 import cinema.dominio.*;
@@ -22,9 +19,9 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
-public class CinemaUpdate extends JPanel {
+@SuppressWarnings("serial")
+public class CinemaUpdate {
 
-	private JFrame frame;
 	private JTextField codigoField;
 	private JTextField nomeField;
 	private JTextField cidadeField;

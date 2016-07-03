@@ -10,42 +10,23 @@ public class FilmeDAO {
 	public static void Create(Filme filme){
 		PreparedStatement pst = null;
 		String sql=("INSERT INTO FILME(CODIGO, TITULO, TITULO_PORT, SINOPSE, ANO_LANCAMENTO, COD_DIRETOR, TIPO, GENERO) "
-				+ "VALUES('"+filme.getCodigo()+"', '"+filme.getTitulo()+"', '"+filme.getTitulo_port()+"', '"+filme.getSinopse()+"', TO_DATE('"+filme.getAno()+" 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), '"
+				+ "VALUES('"+filme.getCodigo()+"', '"+filme.getTitulo()+"', '"+filme.getTitulo_port()+"', '"+filme.getSinopse()+"', '"+filme.getAno()+"', '"
 				+filme.getCod_diretor()+"', '"+filme.getTipo()+"', '"+filme.getGenero()+"')");
-		try {
-			pst = Conexao.executaStatement(sql);
-			pst.execute();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			Conexao.fechaConexaoBanco();
-			Conexao.fechaPreparedStatement();
-		}
+		Conecta.ExecuteQuery(sql);
 	}
 	
 	public static void Delete(String codigo){
-		PreparedStatement pst=null;
-		//Deleta funcionario a partir do seu CPF
-		String sql=("DELETE FILME WHERE CODIGO = "+codigo);
-		try {
-			pst = Conexao.executaStatement(sql);
-			pst.execute();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			Conexao.fechaConexaoBanco();
-			Conexao.fechaPreparedStatement();
-		}
+		//Deleta filme a partir do seu CPF
+		String sql=("DELETE [cinema].[dbo].[FILME] WHERE CODIGO = "+codigo);
+		Conecta.ExecuteQuery(sql);
 	}
 	
 	public static Filme Busca(String codigo){
 		Filme filme = new Filme();
-		PreparedStatement pst = null;
-		String sql = ("SELECT * FROM FILME WHERE CODIGO = "+codigo);
-		ResultSet rs;
+		String sql = ("SELECT * FROM [cinema].[dbo].[FILME] WHERE CODIGO = "+codigo);
+		ResultSet rs = null;
 		try {
-			pst = Conexao.executaStatement(sql);
-			rs = pst.executeQuery();
+			rs = Conecta.GetResultQuery(sql);
 			while(rs.next()){
 				filme.setCodigo(rs.getString("CODIGO"));
 				filme.setTitulo(rs.getString("TITULO"));
@@ -59,8 +40,7 @@ public class FilmeDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			Conexao.fechaConexaoBanco();
-			Conexao.fechaPreparedStatement();
+			if (rs != null) try { rs.close(); } catch(Exception e) {}
 		}
 		return filme;
 	}
@@ -69,63 +49,35 @@ public class FilmeDAO {
 	public static void Update(Filme filme){
 		PreparedStatement pst = null;
 		String sql=("UPDATE FILME "
-				+ "SET TITULO = '"+filme.getTitulo()+"', TITULO_PORT = '"+filme.getTitulo_port()+"', SINOPSE = '"+filme.getSinopse()+"', ANO_LANCAMENTO = TO_DATE('"+filme.getAno()+" 00:00:00', 'YYYY-MM-DD HH24:MI:SS'), COD_DIRETOR = "
+				+ "SET TITULO = '"+filme.getTitulo()+"', TITULO_PORT = '"+filme.getTitulo_port()+"', SINOPSE = '"+filme.getSinopse()+"', ANO_LANCAMENTO = '"+filme.getAno()+"', COD_DIRETOR = "
 				+filme.getCod_diretor()+", TIPO = '"+filme.getTipo()+"', GENERO = '"+filme.getGenero()+"' WHERE CODIGO = "+filme.getCodigo());
-		try {
-			pst = Conexao.executaStatement(sql);
-			pst.execute();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			Conexao.fechaConexaoBanco();
-			Conexao.fechaPreparedStatement();
-		}
+		Conecta.ExecuteQuery(sql);
 	}
 	
 	public static void Add_Ator(String cod_filme, String cod_ator){
 		PreparedStatement pst = null;
 		String sql=("INSERT INTO FILME_POSSUI_ATOR (COD_FILME, COD_ATOR) VALUES ('"+cod_filme+"', '"+cod_ator+"')");
-		try {
-			pst = Conexao.executaStatement(sql);
-			pst.execute();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			Conexao.fechaConexaoBanco();
-			Conexao.fechaPreparedStatement();
-		}
+		Conecta.ExecuteQuery(sql);
 	}
 	
 	public static void Del_Ator(String cod_filme, String cod_ator){
-		PreparedStatement pst = null;
-		String sql=("DELETE FILME_POSSUI_ATOR WHERE COD_ATOR = "+cod_ator+" AND COD_FILME = "+cod_filme);
-		try {
-			pst = Conexao.executaStatement(sql);
-			pst.execute();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			Conexao.fechaConexaoBanco();
-			Conexao.fechaPreparedStatement();
-		}
+		String sql=("DELETE [cinema].[dbo].[FILME_POSSUI_ATOR] WHERE COD_ATOR = "+cod_ator+" AND COD_FILME = "+cod_filme);
+		Conecta.ExecuteQuery(sql);
 	}
 	public static ArrayList<String> Listar(){
 		ArrayList<String> dados = new ArrayList<String>();
-		PreparedStatement pst=null;		
-		ResultSet rs;
-		String sql=("SELECT * FROM FILME");
+		ResultSet rs = null;
+		String sql=("SELECT * FROM [cinema].[dbo].[FILME]");
 		
 		try {
-			pst = Conexao.executaStatement(sql);
-			rs=pst.executeQuery();
+			rs = Conecta.GetResultQuery(sql);
 			while (rs.next()){
 				dados.add(rs.getString("CODIGO")+";"+rs.getString("COD_DIRETOR")+";"+rs.getString("ANO_LANCAMENTO").substring(0,10)+";"+rs.getString("GENERO")+";"+rs.getString("TIPO")+";"+rs.getString("TITULO")+";"+rs.getString("TITULO_PORT"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			Conexao.fechaConexaoBanco();
-			Conexao.fechaPreparedStatement();
+			if (rs != null) try { rs.close(); } catch(Exception e) {}
 		}
 		
 		return dados;

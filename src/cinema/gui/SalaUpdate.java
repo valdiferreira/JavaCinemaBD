@@ -1,25 +1,23 @@
 package cinema.gui;
 
-import java.awt.EventQueue;
 
 import cinema.controllers.*;
 import cinema.dominio.*;
 
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 
 import java.awt.Font;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.ImageIcon;
 
-public class SalaUpdate extends JPanel {
+@SuppressWarnings("serial")
+public class SalaUpdate {
 
-	private JFrame frame;
 
 	public SalaUpdate(Sala sala) {
 		setLayout(null);

@@ -8,55 +8,26 @@ import cinema.dominio.Funcao;
 public class FuncaoDAO {
 
 	public static void Create(Funcao funcao) {
-		PreparedStatement pst = null;
 		String sql = ("INSERT INTO FUNCAO (CODIGO, DESCRICAO) VALUES ('"+funcao.getCodigo()+"', '"+funcao.getDescrição()+"')");
-		try {
-			pst = Conexao.executaStatement(sql);
-			pst.execute();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			Conexao.fechaConexaoBanco();
-			Conexao.fechaPreparedStatement();
-		}
+		Conecta.ExecuteQuery(sql);
 	}
 
 	public static void Delete(String codigo) {
-		PreparedStatement pst = null;
-		String sql = ("DELETE FUNCAO WHERE CODIGO = "+codigo);
-		try {
-			pst = Conexao.executaStatement(sql);
-			pst.execute();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			Conexao.fechaConexaoBanco();
-			Conexao.fechaPreparedStatement();
-		}
+		String sql = ("DELETE [cinema].[dbo].[FUNCAO] WHERE CODIGO = "+codigo);
+		Conecta.ExecuteQuery(sql);
 	}
 
 	public static void Update(Funcao funcao) {
-		PreparedStatement pst = null;
-		String sql = ("UPDATE FUNCAO SET DESCRICAO = '"+funcao.getDescrição()+"' WHERE CODIGO = "+funcao.getCodigo());
-		try {
-			pst = Conexao.executaStatement(sql);
-			pst.execute();
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}finally {
-			Conexao.fechaConexaoBanco();
-			Conexao.fechaPreparedStatement();
-		}
+		String sql = ("UPDATE [cinema].[dbo].[FUNCAO] SET DESCRICAO = '"+funcao.getDescrição()+"' WHERE CODIGO = "+funcao.getCodigo());
+		Conecta.ExecuteQuery(sql);
 	}
 
 	public static Funcao Buscar(String codigo) {
 		Funcao funcao = new Funcao();
-		PreparedStatement pst = null;
-		String sql = ("SELECT * FROM FUNCAO WHERE CODIGO = "+codigo);
-		ResultSet rs;
+		String sql = ("SELECT * FROM [cinema].[dbo].[FUNCAO] WHERE CODIGO = "+codigo);
+		ResultSet rs = null;
 		try {
-			pst = Conexao.executaStatement(sql);
-			rs = pst.executeQuery();
+			rs = Conecta.GetResultQuery(sql);
 			while(rs.next()){
 				funcao.setCodigo(rs.getString("CODIGO"));
 				funcao.setDescrição(rs.getString("DESCRICAO"));
@@ -64,28 +35,24 @@ public class FuncaoDAO {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			Conexao.fechaConexaoBanco();
-			Conexao.fechaPreparedStatement();
+			if (rs != null) try { rs.close(); } catch(Exception e) {}
 		}
 		return funcao;
 	}
 	public static ArrayList<String> Listar(){
 		ArrayList<String> dados = new ArrayList<String>();
-		PreparedStatement pst=null;		
-		ResultSet rs;
-		String sql=("SELECT * FROM FUNCAO");
+		ResultSet rs = null;
+		String sql=("SELECT * FROM [cinema].[dbo].[FUNCAO]");
 		
 		try {
-			pst = Conexao.executaStatement(sql);
-			rs=pst.executeQuery();
+			rs = Conecta.GetResultQuery(sql);
 			while (rs.next()){
 				dados.add(rs.getString("CODIGO")+";"+rs.getString("DESCRiCAO"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}finally {
-			Conexao.fechaConexaoBanco();
-			Conexao.fechaPreparedStatement();
+			if (rs != null) try { rs.close(); } catch(Exception e) {}
 		}
 		
 		return dados;

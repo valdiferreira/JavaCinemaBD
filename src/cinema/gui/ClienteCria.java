@@ -1,10 +1,10 @@
 package cinema.gui;
 
-import java.awt.EventQueue;
 
-import javax.swing.JFrame;
+
+
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
+
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 import javax.swing.JButton;
@@ -13,13 +13,14 @@ import cinema.controllers.*;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.ImageIcon;
+
 import java.awt.Font;
 
-public class ClienteCria extends JPanel {
+@SuppressWarnings("serial")
+public class ClienteCria {
 
-	private JFrame frame;
-	private JTextField textField;
 	private JTextField nomeField;
 	private JTextField codigoField;
 	private JTextField cpfField;

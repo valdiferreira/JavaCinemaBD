@@ -4,7 +4,6 @@ import java.awt.CardLayout;
 
 import cinema.controllers.*;
 
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,7 +11,6 @@ import java.util.ArrayList;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -20,9 +18,8 @@ import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
-public class DiretorIndex extends JPanel {
-
-	private JFrame frame;
+@SuppressWarnings("serial")
+public class DiretorIndex {
 
 	public DiretorIndex() {
 		setLayout(null);

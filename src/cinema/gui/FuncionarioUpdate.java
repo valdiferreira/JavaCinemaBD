@@ -1,9 +1,6 @@
 package cinema.gui;
 
-import java.awt.EventQueue;
 
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 import cinema.dominio.*;
 
@@ -16,12 +13,14 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
 import cinema.controllers.*;
+
 import javax.swing.ImageIcon;
+
 import java.awt.Font;
 
-public class FuncionarioUpdate extends JPanel {
+@SuppressWarnings("serial")
+public class FuncionarioUpdate {
 
-	private JFrame frame;
 	private JTextField nomeField;
 	private JTextField cpfField;
 	private JTextField nctField;

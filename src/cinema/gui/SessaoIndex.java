@@ -1,14 +1,12 @@
 package cinema.gui;
 
 import java.awt.CardLayout;
-import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -19,11 +17,10 @@ import cinema.controllers.*;
 
 import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.ScrollPaneConstants;
 
-public class SessaoIndex extends JPanel {
+@SuppressWarnings("serial")
+public class SessaoIndex {
 
-	private JFrame frame;
 	private JTextField codigoField;
 	private JButton btnPesquisar;
 

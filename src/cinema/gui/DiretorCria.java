@@ -1,12 +1,9 @@
 package cinema.gui;
 
-import java.awt.EventQueue;
 
 import cinema.controllers.*;
 
-import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JLabel;
 
 import java.awt.Font;
@@ -16,11 +13,12 @@ import javax.swing.JButton;
 
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+
 import javax.swing.ImageIcon;
 
-public class DiretorCria extends JPanel {
+@SuppressWarnings("serial")
+public class DiretorCria {
 
-	private JFrame frame;
 	private JTextField codigoField;
 	private JTextField nomeField;
 	private JTextField nacionalidadeField;

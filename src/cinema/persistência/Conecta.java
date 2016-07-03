@@ -2,7 +2,8 @@ package cinema.persistência;
 import java.sql.*;
 
 public class Conecta {
-	public static String url = "jdbc:sqlserver://localhost:1433;databaseName=cinema;integratedSecurity=true";
+	//String Neto
+	public static String url = "jdbc:sqlserver://localhost;databaseName=cinema;integratedSecurity=true";
 	public static Connection con = null;  
     public static Statement stmt = null;  
     public static ResultSet rs = null;
